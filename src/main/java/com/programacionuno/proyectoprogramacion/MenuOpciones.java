@@ -32,6 +32,7 @@ public class MenuOpciones extends Object {
         switch (this.opcion){
             case 'a':
                 System.out.println("Ingreso de datos");
+                System.out.println("David Caceres");
                 break;
             case 'b':
                 System.out.println("Mostrar datos");
