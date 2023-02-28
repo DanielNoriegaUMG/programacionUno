@@ -36,6 +36,7 @@ public class MenuOpciones extends Object {
                 break;
             case 'b':
                 System.out.println("Mostrar datos");
+                System.out.println("Daniel Noriega");
                 break;
             case 'c':
                 System.out.println("Torre de Hanoi");
