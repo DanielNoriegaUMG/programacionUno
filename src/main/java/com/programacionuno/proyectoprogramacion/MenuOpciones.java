@@ -44,7 +44,7 @@ public class MenuOpciones extends Object {
                 System.out.println("Regresar al menu principal");
                 break;
             case 'e':
-                System.out.println("Saliendo");
+                System.out.println("Gracias vuelva pronto");
                 System.exit(1);
                 break;
             default:
