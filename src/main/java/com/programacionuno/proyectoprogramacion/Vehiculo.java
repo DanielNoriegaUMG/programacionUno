@@ -1,57 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.programacionuno.proyectoprogramacion;
+
+import java.util.Scanner;
 
 /**
  *
  * @author Daniel Noriega
  */
-public class Vehiculo extends Object{
+public class Vehiculo extends Object {
+
+    Scanner sc = new Scanner(System.in);
     private static int next = 1;
     private int ID;
-    private boolean ruedas;
-    private boolean puertas;
-    private boolean motor;
+    private boolean remos;
+    private String motor;
     private String modelo;
     private String marca;
     private String linea;
+    private String tipo;
+    int[] indexLetras = new int[3];
+    int[] numeros = new int[3];
     
-    
-    public Vehiculo(){
+    public Vehiculo() {
         this.ID = next;
-        this.ruedas = true;
-        this.puertas = true;
-        this.motor = true;
         this.modelo = "";
         this.marca = "";
         this.linea = "";
+        this.tipo = "";
         next++;
     }
-
-    public boolean isRuedas() {
-        return ruedas;
+    
+    public int getNext(){
+        return next;
     }
-
-    public void setRuedas(boolean ruedas) {
-        this.ruedas = ruedas;
+    
+    public boolean getIsRemos(){
+        return this.remos;
     }
-
-    public boolean isPuertas() {
-        return puertas;
-    }
-
-    public void setPuertas(boolean puertas) {
-        this.puertas = puertas;
-    }
-
-    public boolean isMotor() {
-        return motor;
-    }
-
-    public void setMotor(boolean motor) {
-        this.motor = motor;
+    
+    public void setIsRemos(boolean tiene){
+        this.remos = tiene;
     }
 
     public String getModelo() {
@@ -78,7 +65,78 @@ public class Vehiculo extends Object{
         this.linea = linea;
     }
 
-    public String infoVehiculo(){
-        return "Es un vehiculo...";
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int[] randomLetrasMatricula() {
+        //Para generar index de letras random
+        for (int i = 0; i < 3; i++) {
+            int letrasRandom = (int) Math.floor(Math.random() * 27 + 1);//indice de una letra random->matricula
+            this.indexLetras[i] = letrasRandom;
+        }
+        return indexLetras;
+    }
+    
+    public int[] randomNumerosMatricula(){
+        //Para generar una numeros random
+        for (int i = 0; i < 3; i++) {
+            int numerosRandom = (int) Math.floor(Math.random() * 9);//numeros para la matricula
+            this.numeros[i] = numerosRandom;
+        }
+        return numeros;
+    }
+
+    public void imprimirMatricula() {
+        Letras[] letras = Letras.values();
+        System.out.print("\nMatricula: " + getTipo() + "-");
+        //imprimir letras
+        for (int i = 0; i < 3; i++) {
+            System.out.print(letras[indexLetras[i]]);
+        }
+        //imprimir numeros
+        for (int i = 0; i < 3; i++) {
+            System.out.print(numeros[i]);
+        }
+    }
+
+    public void guardarVehiculo(String tipo) {
+        if (tipo == "P" || tipo == "TC" || tipo == "T" || tipo == "M" || tipo == "A") {
+            System.out.print("Escriba el nombre del motor: ");
+            setMotor(sc.nextLine());
+            System.out.print("Modelo: ");
+            setModelo(sc.nextLine());
+            System.out.print("Marca: ");
+            setMarca(sc.nextLine());
+            setTipo(tipo);
+        }
+        
+        if(tipo == "B"){
+            String respuesta;
+            System.out.println("¿El bote tiene remos?");
+            System.out.print("(si/no): ");
+            respuesta = sc.nextLine();
+            if(respuesta.equalsIgnoreCase("si"))
+                setIsRemos(true);
+            else 
+                setIsRemos(false);
+            setTipo(tipo);
+        }
+    }
+
+    public void infoVehiculo() {
+        System.out.println("Es un vehiculo");
     }
 }
