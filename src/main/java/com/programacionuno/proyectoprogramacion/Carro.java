@@ -64,7 +64,6 @@ public class Carro extends Vehiculo {
         System.out.println("Motor: " +  getMotor());
         System.out.println("Modelo: " +  getModelo());
         System.out.println("Marca: " +  getMarca());
-        System.out.println("Tipo de gasolina: ");
         System.out.println("Tipo de gasolina: " + nombreGas);
         imprimirMatricula();
     }

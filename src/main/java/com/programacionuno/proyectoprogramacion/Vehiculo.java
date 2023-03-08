@@ -101,7 +101,7 @@ public class Vehiculo extends Object {
 
     public void imprimirMatricula() {
         Letras[] letras = Letras.values();
-        System.out.print("\nMatricula: " + getTipo() + "-");
+        System.out.print("Matricula: " + getTipo() + "-");
         //imprimir letras
         for (int i = 0; i < 3; i++) {
             System.out.print(letras[indexLetras[i]]);
@@ -110,6 +110,7 @@ public class Vehiculo extends Object {
         for (int i = 0; i < 3; i++) {
             System.out.print(numeros[i]);
         }
+        System.out.println("\n");
     }
 
     public void guardarVehiculo(String tipo) {

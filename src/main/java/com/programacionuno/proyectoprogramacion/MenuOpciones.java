@@ -151,6 +151,7 @@ public class MenuOpciones{
             case 2:
                 moto.guardarMoto("M");
                 regresarSubMenu('a');
+                System.out.println("Mostrar datos");
                 break;
             case 3:
                 avion.guardar("A");
@@ -160,7 +161,7 @@ public class MenuOpciones{
 
                 break;
             case 5:
-
+                
                 break;
             default:
                 throw new AssertionError();
