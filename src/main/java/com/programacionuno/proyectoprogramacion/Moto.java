@@ -29,6 +29,14 @@ public class Moto extends Vehiculo {
     public void setGas(String gas) {
         this.gas = gas;
     }
+    
+    public int getRuedas(){
+        return this.ruedas;
+    }
+    
+    public void setRuedas(int ruedas){
+        this.ruedas = ruedas;
+    }
 
     public void guardarMoto(String tipo) {
         guardarVehiculo(tipo); //pedir primeros datos si tiene motor
@@ -55,6 +63,7 @@ public class Moto extends Vehiculo {
         System.out.println("Modelo: " +  getModelo());
         System.out.println("Marca: " +  getMarca());
         System.out.println("Tipo de gasolina: " + nombreGas);
+        System.out.println("Total de ruedas: " +  getRuedas());
         imprimirMatricula();
     }
 

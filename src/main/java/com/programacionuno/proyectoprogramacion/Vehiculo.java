@@ -12,6 +12,7 @@ public class Vehiculo extends Object {
     private static int next = 1;
     private int ID;
     private boolean remos;
+    private boolean creado;
     private String motor;
     private String modelo;
     private String marca;
@@ -26,7 +27,16 @@ public class Vehiculo extends Object {
         this.marca = "";
         this.linea = "";
         this.tipo = "";
+        this.creado = false;
         next++;
+    }
+    
+    public void setIsCreado(boolean creado){
+        this.creado = creado;
+    }
+    
+    public boolean getIsCreado(){
+        return this.creado;
     }
     
     public int getNext(){
@@ -84,7 +94,8 @@ public class Vehiculo extends Object {
     public int[] randomLetrasMatricula() {
         //Para generar index de letras random
         for (int i = 0; i < 3; i++) {
-            int letrasRandom = (int) Math.floor(Math.random() * 27);//indice de una letra random->matricula
+            //indice de una letra random->matricula
+            int letrasRandom = (int) Math.floor(Math.random() * 27 + 1);
             this.indexLetras[i] = letrasRandom;
         }
         return indexLetras;
