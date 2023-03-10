@@ -59,12 +59,14 @@ public class Carro extends Vehiculo {
 
     @Override
     public void infoVehiculo() {
-        Gasolina nombreGas = Gasolina.valueOf(getGas());
+        //Gasolina nombreGas = Gasolina.valueOf(getGas());
+        tipoGas = Gasolina.valueOf(getGas());
         System.out.println("DATOS DEL CARRO");
         System.out.println("Motor: " +  getMotor());
         System.out.println("Modelo: " +  getModelo());
         System.out.println("Marca: " +  getMarca());
-        System.out.println("Tipo de gasolina: " + nombreGas);
+        System.out.println("Tipo de gasolina: " + tipoGas);
+        System.out.println("Total de ruedas: " + getRuedas());
         imprimirMatricula();
     }
 

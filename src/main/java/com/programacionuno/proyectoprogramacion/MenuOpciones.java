@@ -7,35 +7,36 @@ import java.util.Scanner;
  *
  * @author Daniel Noriega
  */
-public class MenuOpciones{
-    
+public class MenuOpciones {
+
     Carro carro = new Carro();
     Moto moto = new Moto();
     Avion avion = new Avion();
+    Tren tren = new Tren();
 
     private char opcion;
     private boolean creado;
     private String tipoVehiculo;
-    
+
     Scanner sc = new Scanner(System.in);
 
-    public void setTipoVehiculo(String tipo){
+    public void setTipoVehiculo(String tipo) {
         this.tipoVehiculo = tipo;
     }
-    
-    public String getTipoVehiculo(){
+
+    public String getTipoVehiculo() {
         return tipoVehiculo;
     }
-    
+
     public char getOpcion() {
         return opcion;
     }
-    
-    public void setCreado(boolean creado){
+
+    public void setCreado(boolean creado) {
         this.creado = creado;
     }
-    
-    public boolean getCreado(){
+
+    public boolean getCreado() {
         return this.creado;
     }
 
@@ -77,19 +78,7 @@ public class MenuOpciones{
                     mostrarInfo();
                     break;
                 case 'c':
-                    boolean repetir;
-                    String respuesta;
-                    do{
                         TorreHanoi();
-                        System.out.println("Si desea crear otra torre (Si/No)?");
-                        Scanner consola = new Scanner(System.in);
-                        respuesta = consola.nextLine();
-                        if(respuesta.equalsIgnoreCase("Si")){
-                            repetir = true;
-                        }else if(!respuesta.equalsIgnoreCase("No")){
-                            System.out.println("Ingrese Si para crar ota torre, Ingrese No para regresar");
-                        }
-                    }while(repetir = true);
                     break;
                 case 'd':
                     System.out.println("Regresar al menu principal");
@@ -123,60 +112,72 @@ public class MenuOpciones{
     }
 
     public void mostrarInfo() {
-        
-        if (getCreado()) {
-            switch (getTipoVehiculo()) {
-                case "P":
-                    carro.infoVehiculo();
-                    break;
-                case "M":
-                    moto.infoVehiculo();
-                    break;
-                case "TC":
-                    avion.infoVehiculo();
-                    break;
-                /*case "T":
-                    Tren tren = new Tren();
-                    tren.infoVehiculo();
-                    break;
-                case "B":
-                    Bote bote = new Bote();
-                    bote.infoVehiculo();
-                    break;*/
-                default:
-                    throw new AssertionError();
+
+        try {
+            if (getCreado()) {
+                switch (getTipoVehiculo()) {
+                    case "P":
+                        carro.infoVehiculo();
+                        break;
+                    case "M":
+                        moto.infoVehiculo();
+                        break;
+                    case "A":
+                        avion.infoVehiculo();
+                        break;
+                    case "T":
+                        tren.infoVehiculo();
+                        break;
+                    case "B":
+                        /*Bote bote = new Bote();
+                        bote.infoVehiculo();*/
+                        break;
+                    default:
+                        System.out.println("El tipo de vehiculo no existe...");
+                }
+            } else {
+                System.out.println("Aun no se ha registrado ningun vehiculo");
             }
-        }else{
-            System.out.println("Aun no se ha registrado ningun vehiculo");
+        } catch (AssertionError e) {
+            System.out.println("El tipo de vehiculo no esta dentro de la lista...");
         }
     }
 
     public void ingresoDatos(int tipoVehiculo) {
         System.out.println("Ingrese los datos que se solicitan");
+        sc.nextLine();
         switch (tipoVehiculo) {
             case 1:
                 carro.guardar("P");
+                carro.setIsCreado(true);
                 setCreado(true);
                 setTipoVehiculo("P");
                 regresarSubMenu('a');
                 break;
             case 2:
                 moto.guardarMoto("M");
+                setCreado(true);
+                moto.setIsCreado(true);
+                setTipoVehiculo("M");
                 regresarSubMenu('a');
-                System.out.println("Mostrar datos");
                 break;
             case 3:
                 avion.guardar("A");
+                setCreado(true);
+                setTipoVehiculo("A");
                 regresarSubMenu('a');
                 break;
             case 4:
-
+                tren.guardar("T");
+                setCreado(true);
+                setTipoVehiculo("T");
+                regresarSubMenu('a');
                 break;
             case 5:
-                
+
                 break;
             default:
-                throw new AssertionError();
+                throw new AssertionError("Opcion invalida...");
         }
     }
 
@@ -193,7 +194,7 @@ public class MenuOpciones{
                     ingresoDatos(3);
                     break;
                 case 4:
-
+                    ingresoDatos(4);
                     break;
                 case 5:
 
