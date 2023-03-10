@@ -9,6 +9,7 @@ package com.programacionuno.proyectoprogramacion;
  * @author Usuario
  */
 public class Hanoi {
+    //procedimiento de torre de hanoi
     public void Hanoi(int numero, int inicio, int temp, int fin){
         if(numero == 1){
             System.out.println(inicio+" ---> "+fin);

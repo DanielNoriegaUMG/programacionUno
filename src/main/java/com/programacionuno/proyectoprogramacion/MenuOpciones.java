@@ -78,7 +78,8 @@ public class MenuOpciones {
                     mostrarInfo();
                     break;
                 case 'c':
-                        TorreHanoi();
+                    // Llamada de procedimiento TorreHanoi
+                    TorreHanoi();
                     break;
                 case 'd':
                     System.out.println("Regresar al menu principal");
