@@ -77,7 +77,19 @@ public class MenuOpciones{
                     mostrarInfo();
                     break;
                 case 'c':
-                    System.out.println("Torre de Hanoi");
+                    boolean repetir;
+                    String respuesta;
+                    do{
+                        TorreHanoi();
+                        System.out.println("Si desea crear otra torre (Si/No)?");
+                        Scanner consola = new Scanner(System.in);
+                        respuesta = consola.nextLine();
+                        if(respuesta.equalsIgnoreCase("Si")){
+                            repetir = true;
+                        }else if(!respuesta.equalsIgnoreCase("No")){
+                            System.out.println("Ingrese Si para crar ota torre, Ingrese No para regresar");
+                        }
+                    }while(repetir = true);
                     break;
                 case 'd':
                     System.out.println("Regresar al menu principal");
@@ -195,5 +207,25 @@ public class MenuOpciones{
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
+    }
+    
+    public static void TorreHanoi() {
+        
+        int numero=0;
+        Scanner leer = new Scanner(System.in);
+        Hanoi Torre = new Hanoi();
+        do{
+            try{
+                System.out.println("\n--------- Torre de Hanoi ---------\n");
+                System.out.println("Deves ingresar almenos 3 aros");
+                System.out.println("Ingrese el numero de aros: ");
+                numero = leer.nextInt();
+            }catch (InputMismatchException inputMismatchException) {
+                System.err.println("\nException: " + inputMismatchException);
+                leer.nextLine();
+                System.out.println("Debes de ingresar un numero, inten denuvo\n");
+            }
+        }while(numero<3);
+        Torre.Hanoi(numero, 1, 2, 3);
     }
 }
