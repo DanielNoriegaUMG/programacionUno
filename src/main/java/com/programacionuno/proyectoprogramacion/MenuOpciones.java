@@ -150,6 +150,8 @@ public class MenuOpciones{
                 break;
             case 2:
                 moto.guardarMoto("M");
+                setCreado(true);
+                setTipoVehiculo("M");
                 regresarSubMenu('a');
                 System.out.println("Mostrar datos");
                 break;

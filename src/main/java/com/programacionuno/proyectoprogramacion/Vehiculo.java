@@ -84,7 +84,7 @@ public class Vehiculo extends Object {
     public int[] randomLetrasMatricula() {
         //Para generar index de letras random
         for (int i = 0; i < 3; i++) {
-            int letrasRandom = (int) Math.floor(Math.random() * 27 + 1);//indice de una letra random->matricula
+            int letrasRandom = (int) Math.floor(Math.random() * 27);//indice de una letra random->matricula
             this.indexLetras[i] = letrasRandom;
         }
         return indexLetras;
@@ -105,8 +105,9 @@ public class Vehiculo extends Object {
         //imprimir letras
         for (int i = 0; i < 3; i++) {
             System.out.print(letras[indexLetras[i]]);
+            
         }
-        //imprimir numeros
+        //imprimir numeros del 0 al 9
         for (int i = 0; i < 3; i++) {
             System.out.print(numeros[i]);
         }
@@ -116,11 +117,11 @@ public class Vehiculo extends Object {
     public void guardarVehiculo(String tipo) {
         if (tipo == "P" || tipo == "TC" || tipo == "T" || tipo == "M" || tipo == "A") {
             System.out.print("Escriba el nombre del motor: ");
-            setMotor(sc.nextLine());
+            setMotor(sc.nextLine());// motor ultimo modelo 3.2
             System.out.print("Modelo: ");
-            setModelo(sc.nextLine());
+            setModelo(sc.nextLine());// 2010
             System.out.print("Marca: ");
-            setMarca(sc.nextLine());
+            setMarca(sc.nextLine());//KIA
             setTipo(tipo);
         }
         
@@ -129,6 +130,7 @@ public class Vehiculo extends Object {
             System.out.println("¿El bote tiene remos?");
             System.out.print("(si/no): ");
             respuesta = sc.nextLine();
+            
             if(respuesta.equalsIgnoreCase("si"))
                 setIsRemos(true);
             else 
