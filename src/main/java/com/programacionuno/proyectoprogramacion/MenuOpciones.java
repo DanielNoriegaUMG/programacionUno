@@ -1,5 +1,6 @@
 package com.programacionuno.proyectoprogramacion;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,13 +14,23 @@ public class MenuOpciones {
     Moto moto = new Moto();
     Avion avion = new Avion();
     Tren tren = new Tren();
+    Bote bote = new Bote();
 
     private char opcion;
     private boolean creado;
     private String tipoVehiculo;
+    
 
     Scanner sc = new Scanner(System.in);
 
+    private void setCreado(boolean creado){
+        this.creado = creado;
+    }
+    
+    private boolean isCreado(){
+        return this.creado;
+    }
+    
     public void setTipoVehiculo(String tipo) {
         this.tipoVehiculo = tipo;
     }
@@ -30,10 +41,6 @@ public class MenuOpciones {
 
     public char getOpcion() {
         return opcion;
-    }
-
-    public void setCreado(boolean creado) {
-        this.creado = creado;
     }
 
     public boolean getCreado() {
@@ -74,7 +81,6 @@ public class MenuOpciones {
                     setOpcionVehiculo(sc.nextInt());
                     break;
                 case 'b':
-                    //System.out.println("Mostrar datos");
                     mostrarInfo();
                     break;
                 case 'c':
@@ -115,7 +121,7 @@ public class MenuOpciones {
     public void mostrarInfo() {
 
         try {
-            if (getCreado()) {
+            if(isCreado()) {
                 switch (getTipoVehiculo()) {
                     case "P":
                         carro.infoVehiculo();
@@ -130,8 +136,7 @@ public class MenuOpciones {
                         tren.infoVehiculo();
                         break;
                     case "B":
-                        /*Bote bote = new Bote();
-                        bote.infoVehiculo();*/
+                        bote.infoVehiculo();
                         break;
                     default:
                         System.out.println("El tipo de vehiculo no existe...");
@@ -141,6 +146,9 @@ public class MenuOpciones {
             }
         } catch (AssertionError e) {
             System.out.println("El tipo de vehiculo no esta dentro de la lista...");
+        } catch(Exception e){
+            //System.out.println("Ocurrio un error: " + e .getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 
@@ -150,7 +158,6 @@ public class MenuOpciones {
         switch (tipoVehiculo) {
             case 1:
                 carro.guardar("P");
-                carro.setIsCreado(true);
                 setCreado(true);
                 setTipoVehiculo("P");
                 regresarSubMenu('a');
@@ -158,7 +165,6 @@ public class MenuOpciones {
             case 2:
                 moto.guardarMoto("M");
                 setCreado(true);
-                moto.setIsCreado(true);
                 setTipoVehiculo("M");
                 regresarSubMenu('a');
                 break;
@@ -175,7 +181,9 @@ public class MenuOpciones {
                 regresarSubMenu('a');
                 break;
             case 5:
-
+                bote.guardar();
+                setTipoVehiculo("B");
+                setCreado(true);
                 break;
             default:
                 throw new AssertionError("Opcion invalida...");
@@ -198,34 +206,32 @@ public class MenuOpciones {
                     ingresoDatos(4);
                     break;
                 case 5:
-
+                    ingresoDatos(5);
                     break;
-                case 6:
-
-                    break;
-                /*default:
-                    System.out.println("Error en menu de vehiculo");*/
+                default:
+                    System.out.println("Error en menu de vehiculo");
             }
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
     }
     
-    public static void TorreHanoi() {
-        
+    public void TorreHanoi() {
         int numero=0;
-        Scanner leer = new Scanner(System.in);
         Hanoi Torre = new Hanoi();
         do{
             try{
                 System.out.println("\n--------- Torre de Hanoi ---------\n");
-                System.out.println("Deves ingresar almenos 3 aros");
+                System.out.println("Debes ingresar al menos 3 aros");
                 System.out.println("Ingrese el numero de aros: ");
-                numero = leer.nextInt();
-            }catch (InputMismatchException inputMismatchException) {
-                System.err.println("\nException: " + inputMismatchException);
-                leer.nextLine();
-                System.out.println("Debes de ingresar un numero, inten denuvo\n");
+                numero = sc.nextInt();
+                if(numero < 3){
+                    System.out.println("El numero minimo de aros es de 3");
+                }
+            }catch (InputMismatchException e) {
+//                System.err.println("\nException: " + e);
+                sc.nextLine();
+                System.out.println("Debes de ingresar un numero, intentalo de nuevo\n");
             }
         }while(numero<3);
         Torre.Hanoi(numero, 1, 2, 3);

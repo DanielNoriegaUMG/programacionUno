@@ -11,13 +11,14 @@ public class Vehiculo extends Object {
     Scanner sc = new Scanner(System.in);
     private static int next = 1;
     private int ID;
-    private boolean remos;
-    private boolean creado;
+    
+    private String gas;
     private String motor;
     private String modelo;
     private String marca;
-    private String linea;
     private String tipo;
+    private String tipoVehiculo;
+    private boolean motorBote;
     int[] indexLetras = new int[3];
     int[] numeros = new int[3];
     
@@ -25,30 +26,29 @@ public class Vehiculo extends Object {
         this.ID = next;
         this.modelo = "";
         this.marca = "";
-        this.linea = "";
         this.tipo = "";
-        this.creado = false;
+        this.motorBote = false;
         next++;
     }
     
-    public void setIsCreado(boolean creado){
-        this.creado = creado;
+    public boolean isMotorBote(){
+        return this.motorBote;
     }
     
-    public boolean getIsCreado(){
-        return this.creado;
+    public void setMotorBote(boolean motor){
+        this.motorBote = motor;
+    }
+    
+    public void setGas(String gas){
+        this.gas = gas;
+    }
+    
+    public String getGas(){
+        return this.gas;
     }
     
     public int getNext(){
         return next;
-    }
-    
-    public boolean getIsRemos(){
-        return this.remos;
-    }
-    
-    public void setIsRemos(boolean tiene){
-        this.remos = tiene;
     }
 
     public String getModelo() {
@@ -65,14 +65,6 @@ public class Vehiculo extends Object {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public String getLinea() {
-        return linea;
-    }
-
-    public void setLinea(String linea) {
-        this.linea = linea;
     }
 
     public String getMotor() {
@@ -95,7 +87,7 @@ public class Vehiculo extends Object {
         //Para generar index de letras random
         for (int i = 0; i < 3; i++) {
             //indice de una letra random->matricula
-            int letrasRandom = (int) Math.floor(Math.random() * 27 + 1);
+            int letrasRandom = (int) Math.floor(Math.random() * 25);
             this.indexLetras[i] = letrasRandom;
         }
         return indexLetras;
@@ -133,19 +125,6 @@ public class Vehiculo extends Object {
             setModelo(sc.nextLine());// 2010
             System.out.print("Marca: ");
             setMarca(sc.nextLine());//KIA
-            setTipo(tipo);
-        }
-        
-        if(tipo == "B"){
-            String respuesta;
-            System.out.println("¿El bote tiene remos?");
-            System.out.print("(si/no): ");
-            respuesta = sc.nextLine();
-            
-            if(respuesta.equalsIgnoreCase("si"))
-                setIsRemos(true);
-            else 
-                setIsRemos(false);
             setTipo(tipo);
         }
     }

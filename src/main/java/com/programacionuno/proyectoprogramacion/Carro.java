@@ -8,7 +8,6 @@ public class Carro extends Vehiculo {
 
     private int ruedas;
     private int puertas;
-    private String gas;
     private Gasolina tipoGas;
 
     public Carro(){
@@ -30,14 +29,6 @@ public class Carro extends Vehiculo {
 
     public void setPuertas(int puertas) {
         this.puertas = puertas;
-    }
-
-    public String getGas() {
-        return gas;
-    }
-
-    public void setGas(String gas) {
-        this.gas = gas;
     }
 
     public void guardar(String tipo) {

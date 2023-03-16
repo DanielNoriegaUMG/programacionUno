@@ -1,5 +1,7 @@
 package com.programacionuno.proyectoprogramacion;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Daniel Noriega

@@ -7,7 +7,6 @@ package com.programacionuno.proyectoprogramacion;
 public class Moto extends Vehiculo {
 
     private int ruedas;
-    private String gas;
     private int tipoGas;
 
     public Moto() {
@@ -20,14 +19,6 @@ public class Moto extends Vehiculo {
 
     public void setTipoGas(int tipoGas) {
         this.tipoGas = tipoGas;
-    }
-
-    public String getGas() {
-        return gas;
-    }
-
-    public void setGas(String gas) {
-        this.gas = gas;
     }
     
     public int getRuedas(){

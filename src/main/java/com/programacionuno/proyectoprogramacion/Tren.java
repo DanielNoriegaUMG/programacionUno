@@ -13,7 +13,6 @@ public class Tren extends Vehiculo {
     private int pasajerosVagon;
     private int totalPasajeros;
     private boolean electrico;
-    private String tipoGas;
     private int totalRuedas;
 
     public Tren() {
@@ -46,12 +45,12 @@ public class Tren extends Vehiculo {
     public void setPasajerosVagon(int pasajeros) {
         this.pasajerosVagon = pasajeros;
     }
-    
-    public void setTotalPasajeros(int pasajeros){
+
+    public void setTotalPasajeros(int pasajeros) {
         this.totalPasajeros = pasajeros;
     }
-    
-    public int getTotalPasajeros(){
+
+    public int getTotalPasajeros() {
         this.totalPasajeros = getPasajerosVagon() * getVagones();
         return this.totalPasajeros;
     }
@@ -64,19 +63,11 @@ public class Tren extends Vehiculo {
         this.electrico = electrico;
     }
 
-    public void setGas(String gas) {
-        this.tipoGas = gas;
-    }
-
-    public String getGas() {
-        return this.tipoGas;
-    }
-    
-    public void setTotalRuedas(int ruedasVagon){
+    public void setTotalRuedas(int ruedasVagon) {
         this.totalRuedas = ruedasVagon;
     }
-    
-    public int getTotalRuedas(){
+
+    public int getTotalRuedas() {
         this.totalRuedas = getRuedas() * getVagones();
         return this.totalRuedas;
     }
@@ -84,6 +75,7 @@ public class Tren extends Vehiculo {
     public void guardar(String tipo) {
         String respuesta;
         boolean valida = true;
+        sc.nextLine();
         guardarVehiculo(tipo); //perdir primeros datos si tiene motor
         do {
             System.out.println("El tren es electrico?");
@@ -102,18 +94,21 @@ public class Tren extends Vehiculo {
         } while (valida);
 
         valida = true;
-        do {
-            System.out.println("Tipo que gasolina que utiliza");
-            System.out.println("(super, diesel, regular, especial): ");
-            setGas(sc.nextLine().toUpperCase());
-            try {
-                Gasolina nombreGas = Gasolina.valueOf(getGas());
-                valida = false; // salir del bucle
-            } catch (IllegalArgumentException e) {
-                System.out.println("El tipo de gasolina ingresado no existe");
-                System.out.println("Intente de nuevo...");
-            }
-        } while (valida);
+
+        if (isElectrico()) {
+            do {
+                System.out.println("Tipo que gasolina que utiliza");
+                System.out.println("(super, diesel, regular, especial): ");
+                setGas(sc.nextLine().toUpperCase());
+                try {
+                    Gasolina nombreGas = Gasolina.valueOf(getGas());
+                    valida = false; // salir del bucle
+                } catch (IllegalArgumentException e) {
+                    System.out.println("El tipo de gasolina ingresado no existe");
+                    System.out.println("Intente de nuevo...");
+                }
+            } while (valida);
+        }
 
         valida = true;
         do {
@@ -128,7 +123,7 @@ public class Tren extends Vehiculo {
                 sc.next();
             }
         } while (valida);
-        
+
         valida = true;
         do {
             try {
@@ -156,7 +151,6 @@ public class Tren extends Vehiculo {
 
     @Override
     public void infoVehiculo() {
-        Gasolina nombreGas = Gasolina.valueOf(getGas());
         System.out.println("DATOS DEL TREN");
         System.out.println("Motor: " + getMotor());
         System.out.println("Modelo: " + getModelo());
@@ -166,7 +160,13 @@ public class Tren extends Vehiculo {
         System.out.println("Total de ruedas: " + getTotalRuedas());
         System.out.println("Cantidad de pasajeros por vagon: " + getPasajerosVagon());
         System.out.println("Cantidad maxima de pasajeros: " + getTotalPasajeros());
-        System.out.println("Tipo de gasolina: " + nombreGas);
+        
+        if(isElectrico()){
+            Gasolina nombreGas = Gasolina.valueOf(getGas());
+            System.out.println("Tipo de gasolina: " + nombreGas);
+        }else{
+            System.out.println("Tren con motor a vapor");
+        }
         System.out.println("Total de ruedas: " + getRuedas());
         imprimirMatricula();
     }
