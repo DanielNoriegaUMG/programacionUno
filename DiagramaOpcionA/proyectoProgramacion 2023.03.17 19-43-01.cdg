@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="proyectoProgramacion">
+  <ClassDiagramComponents>
+    <Class name="Avion" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="484.0" yPosition="704.0">
+      <Fields>
+        <Field name="numPasajeros" type="int" visibility="private"/>
+        <Field name="ruedas" type="int" visibility="private"/>
+        <Field name="gas" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getGas" returnType="String" visibility="public"/>
+        <Method name="setGas" returnType="void" visibility="public">
+          <Argument type="String" name="gas"/>
+        </Method>
+        <Method name="setRuedas" returnType="void" visibility="public">
+          <Argument type="int" name="ruedas"/>
+        </Method>
+        <Method name="getRuedas" returnType="int" visibility="public"/>
+        <Method name="getNumPasajeros" returnType="int" visibility="public"/>
+        <Method name="setNumPasajeros" returnType="void" visibility="public">
+          <Argument type="int" name="numPasajeros"/>
+        </Method>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Bote" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="405.0" yPosition="58.0">
+      <Fields>
+        <Field name="remos" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIsRemos" returnType="boolean" visibility="public"/>
+        <Method name="setIsRemos" returnType="void" visibility="public">
+          <Argument type="boolean" name="tiene"/>
+        </Method>
+        <Method name="tieneMotor" returnType="void" visibility="public">
+          <Argument type="String" name="respuesta"/>
+        </Method>
+        <Method name="guardar" returnType="void" visibility="public"/>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Carro" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="446.0" yPosition="377.0">
+      <Fields>
+        <Field name="ruedas" type="int" visibility="private"/>
+        <Field name="puertas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getRuedas" returnType="int" visibility="public"/>
+        <Method name="setRuedas" returnType="void" visibility="public">
+          <Argument type="int" name="ruedas"/>
+        </Method>
+        <Method name="getPuertas" returnType="int" visibility="public"/>
+        <Method name="setPuertas" returnType="void" visibility="public">
+          <Argument type="int" name="puertas"/>
+        </Method>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MenuOpciones" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="39.0" yPosition="108.0">
+      <Fields>
+        <Field name="carro" type="Carro" visibility="package"/>
+        <Field name="moto" type="Moto" visibility="package"/>
+        <Field name="avion" type="Avion" visibility="package"/>
+        <Field name="tren" type="Tren" visibility="package"/>
+        <Field name="bote" type="Bote" visibility="package"/>
+        <Field name="opcion" type="char" visibility="private"/>
+        <Field name="fase" type="int" visibility="private"/>
+        <Field name="creado" type="boolean" visibility="private"/>
+        <Field name="tipoVehiculo" type="String" visibility="private"/>
+        <Field name="sc" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setFase" returnType="void" visibility="private">
+          <Argument type="int" name="opcion"/>
+        </Method>
+        <Method name="getFase" returnType="int" visibility="private"/>
+        <Method name="setCreado" returnType="void" visibility="private">
+          <Argument type="boolean" name="creado"/>
+        </Method>
+        <Method name="isCreado" returnType="boolean" visibility="private"/>
+        <Method name="setTipoVehiculo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="getTipoVehiculo" returnType="String" visibility="public"/>
+        <Method name="getOpcion" returnType="char" visibility="public"/>
+        <Method name="getCreado" returnType="boolean" visibility="public"/>
+        <Method name="setOpcion" returnType="void" visibility="public">
+          <Argument type="char" name="opcion"/>
+        </Method>
+        <Method name="subMenu" returnType="void" visibility="public"/>
+        <Method name="menuPrincipal" returnType="void" visibility="public"/>
+        <Method name="seleccion" returnType="void" visibility="public">
+          <Argument type="char" name="op"/>
+        </Method>
+        <Method name="regresarSubMenu" returnType="void" visibility="public">
+          <Argument type="char" name="op"/>
+        </Method>
+        <Method name="mostrarInfo" returnType="void" visibility="public"/>
+        <Method name="ingresoDatos" returnType="void" visibility="public">
+          <Argument type="int" name="tipoVehiculo"/>
+        </Method>
+        <Method name="setOpcionVehiculo" returnType="void" visibility="public">
+          <Argument type="int" name="op"/>
+        </Method>
+        <Method name="TorreHanoi" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Moto" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="808.0" yPosition="39.0">
+      <Fields>
+        <Field name="ruedas" type="int" visibility="private"/>
+        <Field name="tipoGas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getTipoGas" returnType="int" visibility="public"/>
+        <Method name="setTipoGas" returnType="void" visibility="public">
+          <Argument type="int" name="tipoGas"/>
+        </Method>
+        <Method name="getRuedas" returnType="int" visibility="public"/>
+        <Method name="setRuedas" returnType="void" visibility="public">
+          <Argument type="int" name="ruedas"/>
+        </Method>
+        <Method name="guardarMoto" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="1602.0" yPosition="275.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Tren" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="808.0" yPosition="356.0">
+      <Fields>
+        <Field name="ruedas" type="int" visibility="private"/>
+        <Field name="vagones" type="int" visibility="private"/>
+        <Field name="pasajerosVagon" type="int" visibility="private"/>
+        <Field name="totalPasajeros" type="int" visibility="private"/>
+        <Field name="electrico" type="boolean" visibility="private"/>
+        <Field name="totalRuedas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getRuedas" returnType="int" visibility="public"/>
+        <Method name="setRuedas" returnType="void" visibility="public">
+          <Argument type="int" name="ruedas"/>
+        </Method>
+        <Method name="getVagones" returnType="int" visibility="public"/>
+        <Method name="setVagones" returnType="void" visibility="public">
+          <Argument type="int" name="vagones"/>
+        </Method>
+        <Method name="getPasajerosVagon" returnType="int" visibility="public"/>
+        <Method name="setPasajerosVagon" returnType="void" visibility="public">
+          <Argument type="int" name="pasajeros"/>
+        </Method>
+        <Method name="setTotalPasajeros" returnType="void" visibility="public">
+          <Argument type="int" name="pasajeros"/>
+        </Method>
+        <Method name="getTotalPasajeros" returnType="int" visibility="public"/>
+        <Method name="isElectrico" returnType="boolean" visibility="public"/>
+        <Method name="setElectrico" returnType="void" visibility="public">
+          <Argument type="boolean" name="electrico"/>
+        </Method>
+        <Method name="setTotalRuedas" returnType="void" visibility="public">
+          <Argument type="int" name="ruedasVagon"/>
+        </Method>
+        <Method name="getTotalRuedas" returnType="int" visibility="public"/>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vehiculo" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="1194.0" yPosition="20.0">
+      <Fields>
+        <Field name="sc" type="Scanner" visibility="package"/>
+        <Field name="next" type="int" visibility="private" isStatic="true"/>
+        <Field name="ID" type="int" visibility="private"/>
+        <Field name="gas" type="String" visibility="private"/>
+        <Field name="motor" type="String" visibility="private"/>
+        <Field name="modelo" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="tipoVehiculo" type="String" visibility="private"/>
+        <Field name="motorBote" type="boolean" visibility="private"/>
+        <Field name="indexLetras" type="int[]" visibility="package"/>
+        <Field name="numeros" type="int[]" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isMotorBote" returnType="boolean" visibility="public"/>
+        <Method name="setMotorBote" returnType="void" visibility="public">
+          <Argument type="boolean" name="motor"/>
+        </Method>
+        <Method name="setGas" returnType="void" visibility="public">
+          <Argument type="String" name="gas"/>
+        </Method>
+        <Method name="getGas" returnType="String" visibility="public"/>
+        <Method name="getNext" returnType="int" visibility="public"/>
+        <Method name="getModelo" returnType="String" visibility="public"/>
+        <Method name="setModelo" returnType="void" visibility="public">
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="getMarca" returnType="String" visibility="public"/>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="getMotor" returnType="String" visibility="public"/>
+        <Method name="setMotor" returnType="void" visibility="public">
+          <Argument type="String" name="motor"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="randomLetrasMatricula" returnType="int[]" visibility="public"/>
+        <Method name="randomNumerosMatricula" returnType="int[]" visibility="public"/>
+        <Method name="imprimirMatricula" returnType="void" visibility="public"/>
+        <Method name="guardarVehiculo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="infoVehiculo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Gasolina" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="1602.0" yPosition="81.0">
+      <Literals>
+        <Literal name="SUPER"/>
+        <Literal name="DIESEL"/>
+        <Literal name="REGULAR"/>
+        <Literal name="ESPECIAL"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Tren" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Bote" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <HasRelation name="tren" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Tren" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="bote" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Bote" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Carro" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Avion" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <HasRelation name="moto" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Moto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="carro" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Carro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="avion" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Moto" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
