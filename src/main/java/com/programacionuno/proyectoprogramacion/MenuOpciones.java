@@ -149,15 +149,14 @@ public class MenuOpciones {
 
     }
 
-    public void regresarSubMenu(char op) {
+    public void regresarSubMenu() {
         String regresar;
         sc.nextLine();
         System.out.println("Deseas regresar al submenu?");
         System.out.print("(si/no): ");
         regresar = sc.nextLine();
         if (regresar.equalsIgnoreCase("si")) {
-            setOpcion(op);
-            seleccion(getOpcion());
+            subMenu();
         } else {
             menuPrincipal();
         }
@@ -206,25 +205,25 @@ public class MenuOpciones {
                 carro.guardar("P");
                 setCreado(true);
                 setTipoVehiculo("P");
-                regresarSubMenu('a');
+                regresarSubMenu();
                 break;
             case 2:
                 moto.guardarMoto("M");
                 setCreado(true);
                 setTipoVehiculo("M");
-                regresarSubMenu('a');
+                regresarSubMenu();
                 break;
             case 3:
                 avion.guardar("A");
                 setCreado(true);
                 setTipoVehiculo("A");
-                regresarSubMenu('a');
+                regresarSubMenu();
                 break;
             case 4:
                 tren.guardar("T");
                 setCreado(true);
                 setTipoVehiculo("T");
-                regresarSubMenu('a');
+                regresarSubMenu();
                 break;
             case 5:
                 bote.guardar();

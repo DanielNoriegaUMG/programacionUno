@@ -30,7 +30,7 @@
         <Method name="infoVehiculo" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Bote" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="405.0" yPosition="58.0">
+    <Class name="Bote" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="405.0" yPosition="59.0">
       <Fields>
         <Field name="remos" type="boolean" visibility="private"/>
       </Fields>
@@ -72,7 +72,7 @@
         <Method name="infoVehiculo" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="MenuOpciones" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="39.0" yPosition="108.0">
+    <Class name="MenuOpciones" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="89.0" yPosition="96.0">
       <Fields>
         <Field name="carro" type="Carro" visibility="package"/>
         <Field name="moto" type="Moto" visibility="package"/>
@@ -122,7 +122,7 @@
         <Method name="TorreHanoi" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Moto" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="808.0" yPosition="39.0">
+    <Class name="Moto" package="com.programacionuno.proyectoprogramacion" visibility="public" xPosition="837.0" yPosition="58.0">
       <Fields>
         <Field name="ruedas" type="int" visibility="private"/>
         <Field name="tipoGas" type="int" visibility="private"/>
@@ -260,15 +260,15 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Tren" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
-    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Bote" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
-    <HasRelation name="tren" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Tren" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="bote" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Bote" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Carro" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
-    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Avion" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
-    <HasRelation name="moto" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Moto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="carro" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Carro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="avion" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Tren" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Bote" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <HasRelation name="bote" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Bote" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="moto" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Moto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Avion" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
     <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Moto" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
+    <HasRelation name="tren" source="com.programacionuno.proyectoprogramacion.MenuOpciones" target="com.programacionuno.proyectoprogramacion.Tren" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.programacionuno.proyectoprogramacion.Carro" target="com.programacionuno.proyectoprogramacion.Vehiculo"/>
   </ClassDiagramRelations>
 </ClassDiagram>
