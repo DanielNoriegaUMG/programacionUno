@@ -6,52 +6,45 @@ package com.programacionuno.proyectoprogramacion;
  */
 public class Carro extends Vehiculo {
 
-    private int ruedas;
-    private int puertas;
-
     public Carro() {
-        this.ruedas = 4;
-        this.puertas = 4;
+
     }
 
-    public int getRuedas() {
-        return ruedas;
-    }
-
-    public void setRuedas(int ruedas) {
-        this.ruedas = ruedas;
-    }
-
-    public int getPuertas() {
-        return puertas;
-    }
-
-    public void setPuertas(int puertas) {
-        this.puertas = puertas;
+    public Carro(String gas, String motor, String modelo, String marca,
+            String tipo, int ruedas, int puertas) {
+        super(gas, motor, modelo, marca, tipo, ruedas, puertas);
     }
 
     public void guardar(String tipo) {
-        boolean validar = true;
-        guardarVehiculo(tipo); //perdir primeros datos si tiene motor
-        
+        boolean validar = true; //condicion para iniciar el bucle
+        String motor, modelo, marca, gas = null;
+        guardarVehiculo(tipo); //pedir primeros datos si tiene motor
+        motor = getModelo();
+        modelo = getModelo();
+        marca = getMarca();
+
         do {
             System.out.println("Tipo que gasolina que utiliza");
             System.out.println("(super, diesel, regular, especial): ");
             setGas(sc.nextLine().toUpperCase());
             try {
                 Gasolina nombreGas = Gasolina.valueOf(getGas());
+                gas = getGas();
                 validar = false; // salir del bucle
             } catch (IllegalArgumentException e) {
                 System.out.println("El tipo de gasolina ingresado no existe");
                 System.out.println("Intente de nuevo...");
             }
         } while (validar);
-        
+
         System.out.println("Generando matricula");
         System.out.println("Espere...");
         randomLetrasMatricula();
         randomNumerosMatricula();
         try {
+            Carro nuevoCarro = new Carro(gas, motor, modelo, marca, tipo, 4, 4);
+            listaVehiculos[temporal] = nuevoCarro;
+            clonarLista();
             Thread.sleep(2000);
             System.out.println("Se registro el carro de forma exitosa!");
         } catch (InterruptedException e) {

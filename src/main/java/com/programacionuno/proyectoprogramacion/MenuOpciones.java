@@ -10,6 +10,9 @@ import java.util.Scanner;
  */
 public class MenuOpciones {
 
+    Scanner sc = new Scanner(System.in);
+
+    Vehiculo vehiculos = new Vehiculo();
     Carro carro = new Carro();
     Moto moto = new Moto();
     Avion avion = new Avion();
@@ -20,8 +23,6 @@ public class MenuOpciones {
     private int fase;
     private boolean creado;
     private String tipoVehiculo;
-
-    Scanner sc = new Scanner(System.in);
 
     private void setFase(int opcion) {
         this.fase = opcion;
@@ -62,7 +63,7 @@ public class MenuOpciones {
     public void subMenu() {
         boolean validar = true;
         do {
-            System.out.println("--------- Menu --------");
+            System.out.println("--------- Submenu --------");
             System.out.println("\na. Ingresar datos de un vehiculo");
             System.out.println("b. Mostrar los datos de un vehiculo");
             System.out.println("c. Crear una torre de Hanoi");
@@ -76,12 +77,83 @@ public class MenuOpciones {
         } while (!validar);
     }
 
+    public void subMenuFaseDos() {
+        System.out.println("a. Agregar Carro");
+        System.out.println("b. Agregar Balsa");
+        System.out.println("c. Agregar Avion");
+        System.out.println("d. Ordernar arreglo");
+        System.out.println("e. Mostrar arreglo");
+        System.out.println("f. Regresar");
+        System.out.print("\nSeleccione una opcion: ");
+        setOpcion(sc.next().charAt(0));
+        seleccionFaseDos(getOpcion());
+    }
+
+    public void seleccionFaseDos(char opcion) {
+        try {
+            switch (opcion) {
+                case 'a':
+                    registroListaVehiculo(opcion);
+                    break;
+                case 'b':
+
+                    break;
+                case 'c':
+
+                    break;
+                case 'd':
+
+                    break;
+                case 'e':
+                    System.out.println("MOSTRAR LISTA DE VEHICULOS");
+                    vehiculos.mostrarListaVehiculos();
+                    break;
+                case 'f':
+                    menuPrincipal();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void registroListaVehiculo(char op) {
+        try {
+            switch (op) {
+                case 'a':
+                    ingresoDatos(1);
+                    break;
+                case 'b':
+                    ingresoDatos(2);
+                    break;
+                case 'c':
+                    ingresoDatos(3);
+                    break;
+                case 'd':
+                    ingresoDatos(4);
+                    break;
+                case 'e':
+                    ingresoDatos(5);
+                    break;
+                case 'f':
+                    subMenu();
+                    break;
+                default:
+                    System.out.println("Error en menu de vehiculo");
+            }
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+    }
+
     public void menuPrincipal() {
         boolean salir = true;
         do {
             try {
                 System.out.println("1. Primera Fase - Objetos y recursividad");
-                System.out.println("2 Segunda Fase");
+                System.out.println("2. Fase 2 - Arreglos");
                 System.out.println("3. Tercera Fase");
                 System.out.println("4. Salir del sistema");
                 System.out.print("Digite una opcion: ");
@@ -91,7 +163,7 @@ public class MenuOpciones {
                         subMenu();
                         break;
                     case 2:
-                        System.out.println("Proximamente...");
+                        subMenuFaseDos();
                         break;
                     case 3:
                         System.out.println("Proximamente...");
@@ -118,13 +190,13 @@ public class MenuOpciones {
             switch (op) {
                 case 'a':
                     System.out.println("Ingreso de datos");
-                    System.out.println("1. Nuevo Carro");
-                    System.out.println("2. Nueva Moto");
-                    System.out.println("3. Nuevo Avion");
-                    System.out.println("4. Nuevo Tren");
-                    System.out.println("5. Nuevo Bote");
-                    System.out.println("6. Regresar");
-                    setOpcionVehiculo(sc.nextInt());
+                    System.out.println("a. Nuevo Carro");
+                    System.out.println("b. Nueva Moto");
+                    System.out.println("c. Nuevo Avion");
+                    System.out.println("d. Nuevo Tren");
+                    System.out.println("e. Nuevo Bote");
+                    System.out.println("f. Regresar");
+                    setOpcionVehiculo(sc.next().charAt(0));
                     break;
                 case 'b':
                     mostrarInfo();
@@ -146,7 +218,6 @@ public class MenuOpciones {
         } catch (InputMismatchException e) {
             System.out.println("Debes de ingresar un numero");
         }
-
     }
 
     public void regresarSubMenu() {
@@ -160,11 +231,9 @@ public class MenuOpciones {
         } else {
             menuPrincipal();
         }
-
     }
 
     public void mostrarInfo() {
-
         try {
             if (isCreado()) {
                 switch (getTipoVehiculo()) {
@@ -197,6 +266,10 @@ public class MenuOpciones {
         }
     }
 
+    public void guardarArreglo(Carro carro) {
+        Vehiculo[] vehiculos = new Vehiculo[10];
+    }
+
     public void ingresoDatos(int tipoVehiculo) {
         System.out.println("Ingrese los datos que se solicitan");
         sc.nextLine();
@@ -205,6 +278,7 @@ public class MenuOpciones {
                 carro.guardar("P");
                 setCreado(true);
                 setTipoVehiculo("P");
+                //guardarArreglo();
                 regresarSubMenu();
                 break;
             case 2:
@@ -235,25 +309,25 @@ public class MenuOpciones {
         }
     }
 
-    public void setOpcionVehiculo(int op) {
+    public void setOpcionVehiculo(char op) {
         try {
             switch (op) {
-                case 1:
+                case 'a':
                     ingresoDatos(1);
                     break;
-                case 2:
+                case 'b':
                     ingresoDatos(2);
                     break;
-                case 3:
+                case 'c':
                     ingresoDatos(3);
                     break;
-                case 4:
+                case 'd':
                     ingresoDatos(4);
                     break;
-                case 5:
+                case 'e':
                     ingresoDatos(5);
                     break;
-                case 6:
+                case 'f':
                     subMenu();
                     break;
                 default:
