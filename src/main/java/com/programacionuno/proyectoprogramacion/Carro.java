@@ -19,7 +19,7 @@ public class Carro extends Vehiculo {
         boolean validar = true; //condicion para iniciar el bucle
         String motor, modelo, marca, gas = null;
         guardarVehiculo(tipo); //pedir primeros datos si tiene motor
-        motor = getModelo();
+        motor = getMotor();
         modelo = getModelo();
         marca = getMarca();
 
@@ -29,7 +29,7 @@ public class Carro extends Vehiculo {
             setGas(sc.nextLine().toUpperCase());
             try {
                 Gasolina nombreGas = Gasolina.valueOf(getGas());
-                gas = getGas();
+                gas = getGas().toLowerCase(); //pasar a minusculas para el array
                 validar = false; // salir del bucle
             } catch (IllegalArgumentException e) {
                 System.out.println("El tipo de gasolina ingresado no existe");
@@ -39,13 +39,13 @@ public class Carro extends Vehiculo {
 
         System.out.println("Generando matricula");
         System.out.println("Espere...");
-        randomLetrasMatricula();
-        randomNumerosMatricula();
+//        randomLetrasMatricula();
+//        randomNumerosMatricula();
         try {
             Carro nuevoCarro = new Carro(gas, motor, modelo, marca, tipo, 4, 4);
             listaVehiculos[temporal] = nuevoCarro;
             clonarLista();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.out.println("Se registro el carro de forma exitosa!");
         } catch (InterruptedException e) {
             System.out.println(e);

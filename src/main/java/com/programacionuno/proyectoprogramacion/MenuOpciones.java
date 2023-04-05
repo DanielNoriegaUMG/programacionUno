@@ -105,17 +105,18 @@ public class MenuOpciones {
 
                     break;
                 case 'e':
-                    System.out.println("MOSTRAR LISTA DE VEHICULOS");
                     vehiculos.mostrarListaVehiculos();
                     break;
                 case 'f':
                     menuPrincipal();
                     break;
                 default:
-                    throw new AssertionError();
+                    System.out.println("La opcion no existe, intentalo de nuevo...");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (NullPointerException e) {
+            System.out.println("\nAun no has registrado ningun vehiculo\n");
+        } catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
