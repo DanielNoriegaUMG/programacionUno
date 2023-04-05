@@ -1,5 +1,6 @@
 package com.programacionuno.proyectoprogramacion;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -17,22 +18,17 @@ public class Vehiculo {
     private String modelo;
     private String marca;
     private String tipo;
-    private String tipoVehiculo;
     private int ruedas;
     private int puertas;
+    private String matricula;
     private boolean motorBote;
-    int[] indexLetras = new int[3];
-    int[] numeros = new int[3];
+    private int[] indexLetras = new int[3];
+    private int[] numeros = new int[3];
     protected Vehiculo[] listaVehiculos = new Vehiculo[10];
     private static Vehiculo[] nuevaLista;
 
     public Vehiculo() {
-//        this.ID = next;
-//        next++;
-//        this.modelo = "";
-//        this.marca = "";
-//        this.tipo = "";
-//        this.motorBote = false;
+
     }
 
     public Vehiculo(String gas, String motor, String modelo, String marca, String tipo, int ruedas, int puertas) {
@@ -43,6 +39,7 @@ public class Vehiculo {
         this.tipo = tipo;
         this.ruedas = ruedas;
         this.puertas = puertas;
+        unirMatricula(); //genera la matricula de forma automatica
         ID = next;
         temporal--;
         next++;
@@ -61,24 +58,12 @@ public class Vehiculo {
         temporal = next;
     }
 
-    public void mostrarListaVehiculos() {
-        for (Vehiculo lista : nuevaLista) {
-            if (lista == null) { // Verificar si el objeto no es null
-                System.out.println("Vacio");
-            } else {
-                System.out.println("ID\t" + "|\tMARCA\t|" + "\tMODELO\t" + "|\tMOTOR\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t|");
-                System.out.print(lista.ID + "\t");
-                System.out.print("\t" + lista.getMarca() + "\t");
-                System.out.print("\t" + lista.getModelo() + "\t");
-                System.out.print("\t" + lista.getMotor() + "\t");
-                System.out.print("\t" + lista.getGas() + "\t");
-                if (lista.getRuedas() == 0) {
-                    System.out.print("\t" + "No tiene ruedas\t");
-                } else {
-                    System.out.println("\t" + lista.getRuedas() + "\t");
-                }
-            }
-        }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getMatricula() {
+        return this.matricula;
     }
 
     public boolean isMotorBote() {
@@ -168,32 +153,43 @@ public class Vehiculo {
         Letras[] letras = Letras.values();
         System.out.print("Matricula: " + getTipo() + "-");
         //imprimir letras
-//        for (int i = 0; i < 3; i++) {
-//            System.out.print(letras[indexLetras[i]]);
-//
-//        }
-//        //imprimir numeros del 0 al 9
-//        for (int i = 0; i < 3; i++) {
-//            System.out.print(numeros[i]);
-//        }
+        for (int i = 0; i < 3; i++) {
+            System.out.print(letras[indexLetras[i]]);
+
+        }
+        //imprimir numeros del 0 al 9
+        for (int i = 0; i < 3; i++) {
+            System.out.print(numeros[i]);
+        }
 //        System.out.println("\n");
     }
-    
-    public Object[] unirMatricula(){
-        int[] indexLetras = randomLetrasMatricula();
-        int[] numeros = randomNumerosMatricula();
-        Object[] matriculas = new Object[indexLetras.length + numeros.length];
-        // System.out.println("\n");
 
-        // src = Arreglo de origen
-        // srcPos = Posicion de inicio del parametro 1
-        // dest = Arreglo de destino
-        // destPos = Posiion de inicio del arreglo de parametro 3
-        // length = Numero de elementos a copiar
-        // arracopy(src, srcPos, dest, destPos, length)
-        System.arraycopy(indexLetras, 0, matriculas, 0, indexLetras.length);
-        System.arraycopy(numeros, 0, matriculas, indexLetras.length, numeros.length);
-        return matriculas;
+    private void unirMatricula() {
+        try {
+            int[] indexLetras = randomLetrasMatricula();
+            int[] numeros = randomNumerosMatricula();
+            Object[] matriculas = new Object[indexLetras.length + numeros.length];
+
+            // Copiar letras
+            for (int i = 0; i < indexLetras.length; i++) {
+                matriculas[i] = Letras.values()[indexLetras[i]];
+            }
+
+            // Copiar números
+            for (int i = 0; i < numeros.length; i++) {
+                matriculas[i + indexLetras.length] = numeros[i];
+            }
+
+            // Concatenar los elementos en un solo String
+            StringBuilder sb = new StringBuilder();
+            for (Object matricula : matriculas) {
+                sb.append(matricula);
+            }
+            setMatricula(getTipo() + "-" + sb.toString());
+            //System.out.println("Matricula " + getTipo() + "-" + sb.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void guardarVehiculo(String tipo) {
@@ -208,6 +204,27 @@ public class Vehiculo {
         }
     }
 
+    public void mostrarListaVehiculos() {
+        System.out.println("ID\t|" + "\tMATRICULA\t" + "|\tMARCA\t|" + "\tMODELO\t" + "|\tMOTOR\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t |");
+        for (Vehiculo lista : nuevaLista) {
+            if (lista == null) { // Verificar si el objeto no es null
+                System.out.println("---");
+            } else {                
+                System.out.print(lista.ID + "\t");
+                System.out.print("\t" + lista.getMatricula() + "\t");
+                System.out.print("\t" + lista.getMarca() + "\t");
+                System.out.print("\t" + lista.getModelo() + "\t");
+                System.out.print("\t" + lista.getMotor() + "\t");
+                System.out.print("\t" + lista.getGas() + "\t");
+                if (lista.getRuedas() == 0) {
+                    System.out.print("\t" + "No tiene ruedas\t");
+                } else {
+                    System.out.print("\t\t" + lista.getRuedas() + "\t\t");
+                }
+            }
+        }
+    }
+    
     public void infoVehiculo() {
         System.out.println("Es un vehiculo");
     }
