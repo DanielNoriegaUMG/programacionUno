@@ -11,8 +11,8 @@ public class Carro extends Vehiculo {
     }
 
     public Carro(String gas, String motor, String modelo, String marca,
-            String tipo, int ruedas, int puertas) {
-        super(gas, motor, modelo, marca, tipo, ruedas, puertas);
+            String tipo, int ruedas, int puertas, int pasajeros) {
+        super(gas, motor, modelo, marca, tipo, ruedas, puertas, pasajeros);
     }
 
     public void guardar(String tipo) {
@@ -39,16 +39,39 @@ public class Carro extends Vehiculo {
 
         System.out.println("Generando matricula");
         System.out.println("Espere...");
-//        randomLetrasMatricula();
-//        randomNumerosMatricula();
         try {
-            Carro nuevoCarro = new Carro(gas, motor, modelo, marca, tipo, 4, 4);
-            listaVehiculos[temporal] = nuevoCarro;
+            Carro nuevoCarro = new Carro(gas, motor, modelo, marca, tipo, 4, 4, 4);
+            guardarListaVehiculo(nuevoCarro);
             clonarLista();
             Thread.sleep(1000);
             System.out.println("Se registro el carro de forma exitosa!");
         } catch (InterruptedException e) {
             System.out.println(e);
+        } catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("La lista de Vehiculo ya esta llena...");
+            System.out.println("No puedes seguir ingresando vehiculos :(");
+        }
+    }
+
+    @Override
+    public void mostrarListaVehiculos() {
+        System.out.println("\nID  |\tMATRICULA\t|\t\tMARCA\t\t|\t\tMODELO\t\t"
+                + "|\tMOTOR\t\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t\t|"
+                + "\tPUERTAS\t\t|\tPASAJEROS\t|\tREMOS\t");
+        for (Vehiculo lista : nuevaLista) {
+            if (lista == null) { // Verificar si el objeto no es null
+                System.out.println("---");
+            } else {
+                System.out.print(lista.ID + "\t");
+                System.out.print("  " + lista.getMatricula() + "\t");
+                System.out.print("\t    " + lista.getMarca() + "\t");
+                System.out.print("\t\t     " + lista.getModelo() + "\t");
+                System.out.print("\t\t" + lista.getMotor() + "\t");
+                System.out.print("\t     " + lista.getGas() + "\t");
+                System.out.print("\t\t" + lista.getRuedas() + "\t");
+                System.out.print("\t\t" + lista.getPuertas() + "\t");
+                System.out.print("\t\t" + lista.getNumPasajeros() + "\t");
+            }
         }
     }
 

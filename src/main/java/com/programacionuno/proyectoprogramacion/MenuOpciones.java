@@ -12,12 +12,11 @@ public class MenuOpciones {
 
     Scanner sc = new Scanner(System.in);
 
-    Vehiculo vehiculos = new Vehiculo();
-    Carro carro = new Carro();
-    Moto moto = new Moto();
-    Avion avion = new Avion();
-    Tren tren = new Tren();
-    Bote bote = new Bote();
+    // Creacion de objetos privados
+    private final Vehiculo vehiculos = new Vehiculo();
+    private final Carro carro = new Carro();
+    private final Moto moto = new Moto();
+    private final Bote bote = new Bote();
 
     private char opcion;
     private int fase;
@@ -79,8 +78,8 @@ public class MenuOpciones {
 
     public void subMenuFaseDos() {
         System.out.println("\na. Agregar Carro");
-        System.out.println("b. Agregar Balsa");
-        System.out.println("c. Agregar Avion");
+        System.out.println("b. Agregar Moto");
+        System.out.println("c. Agregar Bote");
         System.out.println("d. Ordernar arreglo");
         System.out.println("e. Mostrar arreglo");
         System.out.println("f. Regresar");
@@ -89,23 +88,24 @@ public class MenuOpciones {
         seleccionFaseDos(getOpcion());
     }
 
+    // seleccionar opcion fase 2
     public void seleccionFaseDos(char opcion) {
         try {
             switch (opcion) {
                 case 'a':
-                    registroListaVehiculo(opcion);
+                    registroListaVehiculo(opcion); // Carro
                     break;
                 case 'b':
-
+                    registroListaVehiculo(opcion); // Moto
                     break;
                 case 'c':
-
+                    registroListaVehiculo(opcion); // Avion
                     break;
                 case 'd':
-
+                    //Para ordenar arreglo
                     break;
                 case 'e':
-                    vehiculos.mostrarListaVehiculos();
+                    bote.mostrarListaVehiculos(); // mostrar array de vehiculos
                     break;
                 case 'f':
                     menuPrincipal();
@@ -133,12 +133,6 @@ public class MenuOpciones {
                     ingresoDatos(3);
                     break;
                 case 'd':
-                    ingresoDatos(4);
-                    break;
-                case 'e':
-                    ingresoDatos(5);
-                    break;
-                case 'f':
                     subMenuFaseUno();
                     break;
                 default:
@@ -149,6 +143,7 @@ public class MenuOpciones {
         }
     }
 
+    // Llamada principal
     public void menuPrincipal() {
         boolean salir = true;
         do {
@@ -186,6 +181,7 @@ public class MenuOpciones {
         } while (salir);
     }
 
+    // seleccion para fase 1
     public void seleccion(char op) {
         try {
             switch (op) {
@@ -193,10 +189,8 @@ public class MenuOpciones {
                     System.out.println("Ingreso de datos");
                     System.out.println("a. Nuevo Carro");
                     System.out.println("b. Nueva Moto");
-                    System.out.println("c. Nuevo Avion");
-                    System.out.println("d. Nuevo Tren");
-                    System.out.println("e. Nuevo Bote");
-                    System.out.println("f. Regresar");
+                    System.out.println("c. Nuevo Bote");
+                    System.out.println("d. Regresar");
                     setOpcionVehiculo(sc.next().charAt(0));
                     break;
                 case 'b':
@@ -221,6 +215,7 @@ public class MenuOpciones {
         }
     }
 
+    // opciones para regresar a X submenu
     public void regresarSubMenu() {
         String regresar;
         sc.nextLine();
@@ -239,14 +234,16 @@ public class MenuOpciones {
                 default:
                     menuPrincipal();
             }
-        }else if (!regresar.equalsIgnoreCase("si") || !regresar.equalsIgnoreCase("no")){
+        }else if (regresar.equalsIgnoreCase("no")){
+            menuPrincipal();
+        }else{
             System.out.println("Error para seleccionar menu, intenta de nuevo...");
             regresarSubMenu();
-        }else{
-            menuPrincipal();
         }
     }
 
+    
+    //mostrar informacion de vehiculo fase 1
     public void mostrarInfo() {
         try {
             if (isCreado()) {
@@ -256,12 +253,6 @@ public class MenuOpciones {
                         break;
                     case "M":
                         moto.infoVehiculo();
-                        break;
-                    case "A":
-                        avion.infoVehiculo();
-                        break;
-                    case "T":
-                        tren.infoVehiculo();
                         break;
                     case "B":
                         bote.infoVehiculo();
@@ -275,13 +266,8 @@ public class MenuOpciones {
         } catch (AssertionError e) {
             System.out.println("El tipo de vehiculo no esta dentro de la lista...");
         } catch (Exception e) {
-            //System.out.println("Ocurrio un error: " + e .getMessage());
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            System.out.println("Ocurrio un error: " + e .getMessage());
         }
-    }
-
-    public void guardarArreglo(Carro carro) {
-        Vehiculo[] vehiculos = new Vehiculo[10];
     }
 
     public void ingresoDatos(int tipoVehiculo) {
@@ -292,7 +278,6 @@ public class MenuOpciones {
                 carro.guardar("P");
                 setCreado(true);
                 setTipoVehiculo("P");
-                //guardarArreglo();
                 regresarSubMenu();
                 break;
             case 2:
@@ -302,21 +287,10 @@ public class MenuOpciones {
                 regresarSubMenu();
                 break;
             case 3:
-                avion.guardar("A");
-                setCreado(true);
-                setTipoVehiculo("A");
-                regresarSubMenu();
-                break;
-            case 4:
-                tren.guardar("T");
-                setCreado(true);
-                setTipoVehiculo("T");
-                regresarSubMenu();
-                break;
-            case 5:
-                bote.guardar();
+                bote.guardar("B");
                 setTipoVehiculo("B");
                 setCreado(true);
+                regresarSubMenu();
                 break;
             default:
                 throw new AssertionError("Opcion invalida...");
@@ -327,19 +301,13 @@ public class MenuOpciones {
         try {
             switch (op) {
                 case 'a':
-                    ingresoDatos(1);
+                    ingresoDatos(1); //carro
                     break;
                 case 'b':
-                    ingresoDatos(2);
+                    ingresoDatos(2); // moto
                     break;
                 case 'c':
-                    ingresoDatos(3);
-                    break;
-                case 'd':
-                    ingresoDatos(4);
-                    break;
-                case 'e':
-                    ingresoDatos(5);
+                    ingresoDatos(5); // bote
                     break;
                 case 'f':
                     subMenuFaseUno();
