@@ -13,7 +13,7 @@ public class Vehiculo {
     protected static int temporal = next;
     protected int ID;
     private String gas;
-    private String motor;
+    protected String motor;
     private String modelo;
     private String marca;
     private String tipo;
@@ -206,13 +206,13 @@ public class Vehiculo {
      * B =  bote -> Bote
      */
     public void guardarVehiculo(String tipo) {
-        if (tipo == "P" || tipo == "M" || tipo == "A") {
+        if (tipo == "P" || tipo == "M") {
             System.out.print("Escriba el nombre del motor: ");
             setMotor(sc.nextLine());// motor ultimo modelo 3.2
             System.out.print("Modelo: ");
             setModelo(sc.nextLine());// 2010
             System.out.print("Marca: ");
-            setMarca(sc.nextLine().toLowerCase());//KIA
+            setMarca(sc.nextLine().toUpperCase());//KIA
             setTipo(tipo);
         }
     }
