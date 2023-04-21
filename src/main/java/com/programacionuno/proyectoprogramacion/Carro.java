@@ -29,7 +29,7 @@ public class Carro extends Vehiculo {
             setGas(sc.nextLine().toUpperCase());
             try {
                 Gasolina nombreGas = Gasolina.valueOf(getGas());
-                gas = getGas().toLowerCase();
+                gas = getGas().toLowerCase(); //pasar a minusculas para el array
                 validar = false; // salir del bucle
             } catch (IllegalArgumentException e) {
                 System.out.println("El tipo de gasolina ingresado no existe");
@@ -41,10 +41,9 @@ public class Carro extends Vehiculo {
         System.out.println("Espere...");
         try {
             Carro nuevoCarro = new Carro(gas, motor, modelo, marca, tipo, 4, 4);
-            //unirMatricula();
             listaVehiculos[temporal] = nuevoCarro;
             clonarLista();
-            Thread.sleep(1500);
+            Thread.sleep(1000);
             System.out.println("Se registro el carro de forma exitosa!");
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
@@ -61,7 +60,6 @@ public class Carro extends Vehiculo {
         System.out.println("Tipo de gasolina: " + nombreGas);
         System.out.println("Total de ruedas: " + getRuedas());
         imprimirMatricula();
-        //unirMatricula();
     }
 
 }

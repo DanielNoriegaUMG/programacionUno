@@ -1,6 +1,5 @@
 package com.programacionuno.proyectoprogramacion;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -48,24 +47,7 @@ public class Vehiculo {
     public Vehiculo(boolean motor) { // ver si tiene motor el bote
         this.motorBote = motor;
     }
-
-    public void guardarListaVehiculo(Vehiculo nuevo) {
-        listaVehiculos[temporal] = nuevo;
-    }
-
-    public void clonarLista() {
-        nuevaLista = listaVehiculos.clone();
-        temporal = next;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getMatricula() {
-        return this.matricula;
-    }
-
+    
     public boolean isMotorBote() {
         return this.motorBote;
     }
@@ -130,6 +112,23 @@ public class Vehiculo {
         this.puertas = puertas;
     }
 
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+    
+    public void guardarListaVehiculo(Vehiculo nuevo) {
+        listaVehiculos[temporal] = nuevo;
+    }
+
+    public void clonarLista() {
+        nuevaLista = listaVehiculos.clone();
+        temporal = next;
+    }
+
     public int[] randomLetrasMatricula() {
         //Para generar index de letras random
         for (int i = 0; i < 3; i++) {
@@ -161,35 +160,30 @@ public class Vehiculo {
         for (int i = 0; i < 3; i++) {
             System.out.print(numeros[i]);
         }
-//        System.out.println("\n");
     }
 
-    private void unirMatricula() {
-        try {
-            int[] indexLetras = randomLetrasMatricula();
-            int[] numeros = randomNumerosMatricula();
-            Object[] matriculas = new Object[indexLetras.length + numeros.length];
+    public void unirMatricula() {
+        int[] indexLetras = randomLetrasMatricula();
+        int[] numeros = randomNumerosMatricula();
+        Object[] matriculas = new Object[indexLetras.length + numeros.length];
 
-            // Copiar letras
-            for (int i = 0; i < indexLetras.length; i++) {
-                matriculas[i] = Letras.values()[indexLetras[i]];
-            }
-
-            // Copiar números
-            for (int i = 0; i < numeros.length; i++) {
-                matriculas[i + indexLetras.length] = numeros[i];
-            }
-
-            // Concatenar los elementos en un solo String
-            StringBuilder sb = new StringBuilder();
-            for (Object matricula : matriculas) {
-                sb.append(matricula);
-            }
-            setMatricula(getTipo() + "-" + sb.toString());
-            //System.out.println("Matricula " + getTipo() + "-" + sb.toString());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        // Copiar letras
+        for (int i = 0; i < indexLetras.length; i++) {
+            matriculas[i] = Letras.values()[indexLetras[i]];
         }
+
+        // Copiar números
+        for (int i = 0; i < numeros.length; i++) {
+            matriculas[i + indexLetras.length] = numeros[i];
+        }
+
+        // Concatenar los elementos en un solo String
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < matriculas.length; i++) {
+            sb.append(matriculas[i]);
+        }
+        //System.out.println(sb.toString());
+        setMatricula(getTipo() + "-" + sb.toString());
     }
 
     public void guardarVehiculo(String tipo) {

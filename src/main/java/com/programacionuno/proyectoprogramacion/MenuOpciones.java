@@ -60,7 +60,7 @@ public class MenuOpciones {
         this.opcion = Character.toLowerCase(opcion);
     }
 
-    public void subMenu() {
+    public void subMenuFaseUno() {
         boolean validar = true;
         do {
             System.out.println("--------- Submenu --------");
@@ -78,7 +78,7 @@ public class MenuOpciones {
     }
 
     public void subMenuFaseDos() {
-        System.out.println("a. Agregar Carro");
+        System.out.println("\na. Agregar Carro");
         System.out.println("b. Agregar Balsa");
         System.out.println("c. Agregar Avion");
         System.out.println("d. Ordernar arreglo");
@@ -105,17 +105,18 @@ public class MenuOpciones {
 
                     break;
                 case 'e':
-                    System.out.println("MOSTRAR LISTA DE VEHICULOS");
                     vehiculos.mostrarListaVehiculos();
                     break;
                 case 'f':
                     menuPrincipal();
                     break;
                 default:
-                    throw new AssertionError();
+                    System.out.println("La opcion no existe, intentalo de nuevo...");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (NullPointerException e) {
+            System.out.println("\nAun no has registrado ningun vehiculo\n");
+        } catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -138,7 +139,7 @@ public class MenuOpciones {
                     ingresoDatos(5);
                     break;
                 case 'f':
-                    subMenu();
+                    subMenuFaseUno();
                     break;
                 default:
                     System.out.println("Error en menu de vehiculo");
@@ -160,7 +161,7 @@ public class MenuOpciones {
                 setFase(sc.nextInt());
                 switch (getFase()) {
                     case 1:
-                        subMenu();
+                        subMenuFaseUno();
                         break;
                     case 2:
                         subMenuFaseDos();
@@ -223,12 +224,25 @@ public class MenuOpciones {
     public void regresarSubMenu() {
         String regresar;
         sc.nextLine();
+        int menuFase = getFase();
         System.out.println("Deseas regresar al submenu?");
         System.out.print("(si/no): ");
         regresar = sc.nextLine();
-        if (regresar.equalsIgnoreCase("si")) {
-            subMenu();
-        } else {
+        if(regresar.equalsIgnoreCase("si")){
+            switch (menuFase) {
+                case 1:
+                    subMenuFaseUno();
+                    break;
+                case 2:
+                    subMenuFaseDos();
+                    break;
+                default:
+                    menuPrincipal();
+            }
+        }else if (!regresar.equalsIgnoreCase("si") || !regresar.equalsIgnoreCase("no")){
+            System.out.println("Error para seleccionar menu, intenta de nuevo...");
+            regresarSubMenu();
+        }else{
             menuPrincipal();
         }
     }
@@ -328,7 +342,7 @@ public class MenuOpciones {
                     ingresoDatos(5);
                     break;
                 case 'f':
-                    subMenu();
+                    subMenuFaseUno();
                     break;
                 default:
                     System.out.println("Error en menu de vehiculo");
