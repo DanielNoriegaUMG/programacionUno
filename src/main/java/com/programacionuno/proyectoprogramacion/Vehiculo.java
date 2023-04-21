@@ -18,11 +18,9 @@ public class Vehiculo {
     private String marca;
     private String tipo;
     private String matricula;
-    private String tipoVehiculo;
     private int ruedas;
     private int puertas;
     private int numPasajeros;
-    private boolean motorBote;
     int[] indexLetras = new int[3];
     int[] numeros = new int[3];
     private static Vehiculo[] listaVehiculos = new Vehiculo[10];
@@ -45,10 +43,6 @@ public class Vehiculo {
         ID = next;
         temporal--;
         next++;
-    }
-
-    public Vehiculo(boolean motor) { // ver si tiene motor el bote
-        this.motorBote = motor;
     }
 
     public void setGas(String gas) {
@@ -102,11 +96,11 @@ public class Vehiculo {
     public int getPuertas() {
         return puertas;
     }
-    
+
     public void setPuertas(int puertas) {
         this.puertas = puertas;
     }
-        
+
     public int getNumPasajeros() {
         return numPasajeros;
     }
@@ -122,8 +116,8 @@ public class Vehiculo {
     public String getMatricula() {
         return matricula;
     }
-    
-    // guardar el objeto nuevo dentro del array
+
+    // guardar el objeto nuevo dentro del array 
     public void guardarListaVehiculo(Vehiculo nuevo) {
         listaVehiculos[temporal] = nuevo;
     }
@@ -200,13 +194,11 @@ public class Vehiculo {
     }
 
     /**
-     * @param tipo recibe el tipo que sera el vehiculo
-     * P = particular -> Carro
-     * M = moto -> Moto
-     * B =  bote -> Bote
+     * @param tipo recibe el tipo que sera el vehiculo P = particular -> Carro M
+     * = moto -> Moto B = bote -> Bote
      */
     public void guardarVehiculo(String tipo) {
-        if (tipo == "P" || tipo == "M" || tipo == "A") {
+        if (tipo == "P" || tipo == "M") {
             System.out.print("Escriba el nombre del motor: ");
             setMotor(sc.nextLine());// motor ultimo modelo 3.2
             System.out.print("Modelo: ");
@@ -219,5 +211,34 @@ public class Vehiculo {
 
     public void infoVehiculo() {
         System.out.println("Es un vehiculo");
+    }
+    
+    public static class Registros {
+
+        public static void listaVehiculos() {
+            System.out.println("\nID  |\tMATRICULA\t|\t\tMARCA\t\t|\t\tMODELO\t\t"
+                    + "|\tMOTOR\t\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t\t|"
+                    + "\tPUERTAS\t\t|\tPASAJEROS\t|\tREMOS\t");
+            for (Vehiculo vehiculo : nuevaLista) {
+                if (vehiculo == null) {
+                    System.out.println("---");
+                } else {
+                    System.out.print(vehiculo.ID + "\t");
+                    System.out.print("  " + vehiculo.getMatricula() + "\t");
+                    System.out.print("\t    " + vehiculo.getMarca() + "\t");
+                    System.out.print("\t\t     " + vehiculo.getModelo() + "\t");
+                    System.out.print("\t\t" + vehiculo.getMotor() + "\t");
+                    System.out.print("\t     " + vehiculo.getGas() + "\t");
+                    System.out.print("\t\t" + vehiculo.getRuedas() + "\t");
+                    System.out.print("\t\t" + vehiculo.getPuertas() + "\t");
+                    System.out.print("\t\t" + vehiculo.getNumPasajeros() + "\t");
+                    if (vehiculo instanceof Bote && ((Bote) vehiculo).getIsRemos()) {
+                        System.out.print("\t si\n");
+                    } else {
+                        System.out.print("\t no\n");
+                    }
+                }
+            }
+        }
     }
 }
