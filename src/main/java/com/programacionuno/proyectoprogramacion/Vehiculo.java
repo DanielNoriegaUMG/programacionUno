@@ -13,24 +13,33 @@ public class Vehiculo {
     protected static int temporal = next;
     protected int ID;
     private String gas;
-    private String motor;
+    protected String motor;
     private String modelo;
     private String marca;
     private String tipo;
     private int ruedas;
     private int puertas;
+<<<<<<< HEAD
     private String matricula;
     private boolean motorBote;
     private int[] indexLetras = new int[3];
     private int[] numeros = new int[3];
     protected Vehiculo[] listaVehiculos = new Vehiculo[10];
     private static Vehiculo[] nuevaLista;
+=======
+    private int numPasajeros;
+    private boolean motorBote;
+    int[] indexLetras = new int[3];
+    int[] numeros = new int[3];
+    private static Vehiculo[] listaVehiculos = new Vehiculo[10];
+    protected static Vehiculo[] nuevaLista;
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
 
     public Vehiculo() {
 
     }
 
-    public Vehiculo(String gas, String motor, String modelo, String marca, String tipo, int ruedas, int puertas) {
+    public Vehiculo(String gas, String motor, String modelo, String marca, String tipo, int ruedas, int puertas, int pasajeros) {
         this.gas = gas;
         this.motor = motor;
         this.modelo = modelo;
@@ -38,7 +47,12 @@ public class Vehiculo {
         this.tipo = tipo;
         this.ruedas = ruedas;
         this.puertas = puertas;
+<<<<<<< HEAD
         unirMatricula(); //genera la matricula de forma automatica
+=======
+        this.numPasajeros = pasajeros;
+        unirMatricula();
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
         ID = next;
         temporal--;
         next++;
@@ -47,6 +61,7 @@ public class Vehiculo {
     public Vehiculo(boolean motor) { // ver si tiene motor el bote
         this.motorBote = motor;
     }
+<<<<<<< HEAD
     
     public boolean isMotorBote() {
         return this.motorBote;
@@ -55,6 +70,8 @@ public class Vehiculo {
     public void setMotorBote(boolean motor) {
         this.motorBote = motor;
     }
+=======
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
 
     public void setGas(String gas) {
         this.gas = gas;
@@ -107,9 +124,17 @@ public class Vehiculo {
     public int getPuertas() {
         return puertas;
     }
-
+    
     public void setPuertas(int puertas) {
         this.puertas = puertas;
+    }
+        
+    public int getNumPasajeros() {
+        return numPasajeros;
+    }
+
+    public void setNumPasajeros(int numPasajeros) {
+        this.numPasajeros = numPasajeros;
     }
 
     public void setMatricula(String matricula) {
@@ -120,10 +145,18 @@ public class Vehiculo {
         return matricula;
     }
     
+<<<<<<< HEAD
+=======
+    // guardar el objeto nuevo dentro del array
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
     public void guardarListaVehiculo(Vehiculo nuevo) {
         listaVehiculos[temporal] = nuevo;
     }
 
+<<<<<<< HEAD
+=======
+    // clona array de vehiculos para poder utilizarlo
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
     public void clonarLista() {
         nuevaLista = listaVehiculos.clone();
         temporal = next;
@@ -148,6 +181,7 @@ public class Vehiculo {
         return numeros;
     }
 
+    //imprime la matricula de la fase 1
     public void imprimirMatricula() {
         Letras[] letras = Letras.values();
         System.out.print("Matricula: " + getTipo() + "-");
@@ -162,6 +196,7 @@ public class Vehiculo {
         }
     }
 
+    // Une los arreglos de la matricula (randomLetras y randomNumeros)
     public void unirMatricula() {
         int[] indexLetras = randomLetrasMatricula();
         int[] numeros = randomNumerosMatricula();
@@ -182,10 +217,10 @@ public class Vehiculo {
         for (int i = 0; i < matriculas.length; i++) {
             sb.append(matriculas[i]);
         }
-        //System.out.println(sb.toString());
         setMatricula(getTipo() + "-" + sb.toString());
     }
 
+<<<<<<< HEAD
     public void guardarVehiculo(String tipo) {
         if (tipo == "P" || tipo == "TC" || tipo == "T" || tipo == "M" || tipo == "A") {
             System.out.print("Escriba el nombre del motor: ");
@@ -219,6 +254,32 @@ public class Vehiculo {
         }
     }
     
+=======
+    // Imprime el array de vehiculos de la fase 2
+    public void mostrarListaVehiculos() {
+        System.out.println("\nID  |" + "\tMATRICULA\t" + "|\t\tMARCA\t\t|" + "\t\tMODELO\t\t" + "|\tMOTOR\t\t|" + "\tGASOLINA\t"
+                + "|\tRUEDAS\t\t|" + "\tPUERTAS\t\t" + "|\tPASAJEROS\t|");
+    }
+
+    /**
+     * @param tipo recibe el tipo que sera el vehiculo
+     * P = particular -> Carro
+     * M = moto -> Moto
+     * B =  bote -> Bote
+     */
+    public void guardarVehiculo(String tipo) {
+        if (tipo == "P" || tipo == "M") {
+            System.out.print("Escriba el nombre del motor: ");
+            setMotor(sc.nextLine());// motor ultimo modelo 3.2
+            System.out.print("Modelo: ");
+            setModelo(sc.nextLine());// 2010
+            System.out.print("Marca: ");
+            setMarca(sc.nextLine().toUpperCase());//KIA
+            setTipo(tipo);
+        }
+    }
+
+>>>>>>> a9fb2ad2021f0cf819fc7ac6f8c3a554018830b2
     public void infoVehiculo() {
         System.out.println("Es un vehiculo");
     }

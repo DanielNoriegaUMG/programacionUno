@@ -6,39 +6,29 @@ package com.programacionuno.proyectoprogramacion;
  */
 public class Moto extends Vehiculo {
 
-    private int ruedas;
-    private int tipoGas;
-
     public Moto() {
-        this.ruedas = 2;
+
     }
 
-    public int getTipoGas() {
-        return tipoGas;
-    }
-
-    public void setTipoGas(int tipoGas) {
-        this.tipoGas = tipoGas;
-    }
-
-    public int getRuedas() {
-        return this.ruedas;
-    }
-
-    public void setRuedas(int ruedas) {
-        this.ruedas = ruedas;
+    public Moto(String gas, String motor, String modelo, String marca,
+            String tipo, int ruedas, int puertas, int pasajeros) {
+        super(gas, motor, modelo, marca, tipo, ruedas, puertas, pasajeros);
     }
 
     public void guardarMoto(String tipo) {
-        boolean validar = true;
+        boolean validar = true; //condicion para iniciar el bucle
+        String motor, modelo, marca, gas = null;
         guardarVehiculo(tipo); //pedir primeros datos si tiene motor
-        
+        motor = getMotor();
+        modelo = getModelo();
+        marca = getMarca();
         do {
             System.out.println("Tipo que gasolina que utiliza");
             System.out.println("(super, diesel, regular, especial): ");
             setGas(sc.nextLine().toUpperCase());
             try {
                 Gasolina nombreGas = Gasolina.valueOf(getGas());
+                gas = getGas().toLowerCase();
                 validar = false; // salir del bucle
             } catch (IllegalArgumentException e) {
                 System.out.println("El tipo de gasolina ingresado no existe");
@@ -48,13 +38,39 @@ public class Moto extends Vehiculo {
 
         System.out.println("Generando matricula");
         System.out.println("Espere...");
-        randomLetrasMatricula();
-        randomNumerosMatricula();
         try {
+            Moto nuevaMoto = new Moto(gas, motor, modelo, marca, tipo, 2, 0, 2);
+            guardarListaVehiculo(nuevaMoto);
+            clonarLista();
             Thread.sleep(2000);
             System.out.println("Se registro la moto de forma exitosa!");
         } catch (InterruptedException e) {
             System.out.println(e);
+        } catch(NullPointerException e){
+            System.out.println("La lista de Vehiculo ya esta llena...");
+            System.out.println("No puedes seguir ingresando vehiculos :(");
+        }
+    }
+
+    @Override
+    public void mostrarListaVehiculos() {
+        System.out.println("\nID  |\tMATRICULA\t|\t\tMARCA\t\t|\t\tMODELO\t\t"
+                + "|\tMOTOR\t\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t\t|"
+                + "\tPUERTAS\t\t|\tPASAJEROS\t|\tREMOS\t");
+        for (Vehiculo lista : nuevaLista) {
+            if (lista == null) { // Verificar si el objeto no es null
+                System.out.println("---");
+            } else {
+                System.out.print(lista.ID + "\t");
+                System.out.print("  " + lista.getMatricula() + "\t");
+                System.out.print("\t    " + lista.getMarca() + "\t");
+                System.out.print("\t\t     " + lista.getModelo() + "\t");
+                System.out.print("\t\t" + lista.getMotor() + "\t");
+                System.out.print("\t     " + lista.getGas() + "\t");
+                System.out.print("\t\t" + lista.getRuedas() + "\t");
+                System.out.print("\t\t" + lista.getPuertas() + "\t");
+                System.out.print("\t\t" + lista.getNumPasajeros() + "\t");
+            }
         }
     }
 
