@@ -102,10 +102,11 @@ public class MenuOpciones {
                     registroListaVehiculo(opcion); // Avion
                     break;
                 case 'd':
-                    //Para ordenar arreglo
+                    Vehiculo.Registros.listaVehiculosDescendente();//Para ordenar arreglo
+                    System.out.println("\n");
                     break;
                 case 'e':
-                    bote.mostrarListaVehiculos(); // mostrar array de vehiculos
+                    Vehiculo.Registros.listaVehiculos(); // mostrar array de vehiculos
                     break;
                 case 'f':
                     menuPrincipal();
@@ -115,7 +116,10 @@ public class MenuOpciones {
             }
         } catch (NullPointerException e) {
             System.out.println("\nAun no has registrado ningun vehiculo\n");
+        } catch(IndexOutOfBoundsException e){
+            System.out.println("Vehiculo no encontrado...");
         } catch(Exception e){
+            System.out.println("Ocurrio un error...");
             System.out.println(e.getMessage());
         }
     }

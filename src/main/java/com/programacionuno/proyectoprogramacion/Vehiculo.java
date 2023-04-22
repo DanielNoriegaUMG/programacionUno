@@ -212,30 +212,95 @@ public class Vehiculo {
     public void infoVehiculo() {
         System.out.println("Es un vehiculo");
     }
-    
+
     public static class Registros {
 
+        public static void imprimirColumnas() {
+            System.out.printf("%-4s | "
+                    + "%-10s | "
+                    + "%-15s | "
+                    + "%-15s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-8s | "
+                    + "%-8s | "
+                    + "%-10s | "
+                    + "%-5s\n",
+                    "ID",
+                    "MATRICULA",
+                    "MARCA",
+                    "MODELO",
+                    "MOTOR",
+                    "GASOLINA",
+                    "RUEDAS",
+                    "PUERTAS",
+                    "PASAJEROS",
+                    "REMOS");
+        }
+
         public static void listaVehiculos() {
-            System.out.println("\nID  |\tMATRICULA\t|\t\tMARCA\t\t|\t\tMODELO\t\t"
-                    + "|\tMOTOR\t\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t\t|"
-                    + "\tPUERTAS\t\t|\tPASAJEROS\t|\tREMOS\t");
-            for (Vehiculo vehiculo : nuevaLista) {
+            imprimirColumnas();
+            for (Vehiculo vehiculo : listaVehiculos) {
                 if (vehiculo == null) {
                     System.out.println("---");
                 } else {
-                    System.out.print(vehiculo.ID + "\t");
-                    System.out.print("  " + vehiculo.getMatricula() + "\t");
-                    System.out.print("\t    " + vehiculo.getMarca() + "\t");
-                    System.out.print("\t\t     " + vehiculo.getModelo() + "\t");
-                    System.out.print("\t\t" + vehiculo.getMotor() + "\t");
-                    System.out.print("\t     " + vehiculo.getGas() + "\t");
-                    System.out.print("\t\t" + vehiculo.getRuedas() + "\t");
-                    System.out.print("\t\t" + vehiculo.getPuertas() + "\t");
-                    System.out.print("\t\t" + vehiculo.getNumPasajeros() + "\t");
+                    System.out.printf("%-4d | " // ID
+                            + "%-10s | " // matricula
+                            + "%-15s | " // marca
+                            + "%-15s | " // modelo
+                            + "%-10s | " // motor
+                            + "%-10s | " // gas
+                            + "%-8d | " // ruedas
+                            + "%-8d | " // puertas
+                            + "%-10d | ", // pasajeros
+                            vehiculo.ID,
+                            vehiculo.getMatricula(),
+                            vehiculo.getMarca(),
+                            vehiculo.getModelo(),
+                            vehiculo.getMotor(),
+                            vehiculo.getGas(),
+                            vehiculo.getRuedas(),
+                            vehiculo.getPuertas(),
+                            vehiculo.getNumPasajeros());
+
                     if (vehiculo instanceof Bote && ((Bote) vehiculo).getIsRemos()) {
-                        System.out.print("\t si\n");
+                        System.out.printf("%-2s\n", "si");
                     } else {
-                        System.out.print("\t no\n");
+                        System.out.printf("%-2s\n", "no");
+                    }
+                }
+            }
+        }
+
+        public static void listaVehiculosDescendente() {
+            imprimirColumnas();
+            for (int i = nuevaLista.length - 1; i >= 0; i--) {
+                if (nuevaLista[i] == null) {
+                    System.out.println("---");
+                } else {
+                    System.out.printf("%-4d | "
+                            + "%-10s | "
+                            + "%-15s | "
+                            + "%-15s | "
+                            + "%-10s | "
+                            + "%-10s | "
+                            + "%-8d | "
+                            + "%-8d | "
+                            + "%-10d |",
+                            nuevaLista[i].ID,
+                            nuevaLista[i].getMatricula(),
+                            nuevaLista[i].getMarca(),
+                            nuevaLista[i].getModelo(),
+                            nuevaLista[i].getMotor(),
+                            nuevaLista[i].getGas(),
+                            nuevaLista[i].getRuedas(),
+                            nuevaLista[i].getPuertas(),
+                            nuevaLista[i].getNumPasajeros());
+
+                    if (nuevaLista[i] instanceof Bote && ((Bote) nuevaLista[i]).getIsRemos()) {
+                        System.out.printf("%-2s\n", "si");
+                    } else {
+                        System.out.printf("%-2s\n", "no");
                     }
                 }
             }

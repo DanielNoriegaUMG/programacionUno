@@ -54,28 +54,6 @@ public class Carro extends Vehiculo {
     }
 
     @Override
-    public void mostrarListaVehiculos() {
-        System.out.println("\nID  |\tMATRICULA\t|\t\tMARCA\t\t|\t\tMODELO\t\t"
-                + "|\tMOTOR\t\t|" + "\tGASOLINA\t" + "|\tRUEDAS\t\t|"
-                + "\tPUERTAS\t\t|\tPASAJEROS\t|\tREMOS\t");
-        for (Vehiculo lista : nuevaLista) {
-            if (lista == null) { // Verificar si el objeto no es null
-                System.out.println("---");
-            } else {
-                System.out.print(lista.ID + "\t");
-                System.out.print("  " + lista.getMatricula() + "\t");
-                System.out.print("\t    " + lista.getMarca() + "\t");
-                System.out.print("\t\t     " + lista.getModelo() + "\t");
-                System.out.print("\t\t" + lista.getMotor() + "\t");
-                System.out.print("\t     " + lista.getGas() + "\t");
-                System.out.print("\t\t" + lista.getRuedas() + "\t");
-                System.out.print("\t\t" + lista.getPuertas() + "\t");
-                System.out.print("\t\t" + lista.getNumPasajeros() + "\t");
-            }
-        }
-    }
-
-    @Override
     public void infoVehiculo() {
         Gasolina nombreGas = Gasolina.valueOf(getGas());
         System.out.println("DATOS DEL CARRO");
