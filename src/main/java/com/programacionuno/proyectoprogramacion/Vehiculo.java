@@ -13,7 +13,7 @@ public class Vehiculo {
     protected static int temporal = next;
     protected int ID;
     private String gas;
-    private String motor;
+    protected String motor;
     private String modelo;
     private String marca;
     private String tipo;
@@ -21,10 +21,11 @@ public class Vehiculo {
     private int ruedas;
     private int puertas;
     private int numPasajeros;
-    int[] indexLetras = new int[3];
-    int[] numeros = new int[3];
-    private static Vehiculo[] listaVehiculos = new Vehiculo[10];
-    protected static Vehiculo[] nuevaLista;
+    private boolean motorBote;
+    private int[] indexLetras = new int[3];
+    private int[] numeros = new int[3];
+    protected static Vehiculo[] listaVehiculos = new Vehiculo[10];
+    private static Vehiculo[] nuevaLista;
 
     public Vehiculo() {
 
@@ -38,11 +39,15 @@ public class Vehiculo {
         this.tipo = tipo;
         this.ruedas = ruedas;
         this.puertas = puertas;
+        unirMatricula(); //genera la matricula de forma automatica
         this.numPasajeros = pasajeros;
-        unirMatricula();
         ID = next;
         temporal--;
         next++;
+    }
+    
+    public Vehiculo(boolean motor) { // ver si tiene motor el bote
+        this.motorBote = motor;
     }
 
     public void setGas(String gas) {
@@ -116,8 +121,8 @@ public class Vehiculo {
     public String getMatricula() {
         return matricula;
     }
-
-    // guardar el objeto nuevo dentro del array 
+    
+    // guardar el objeto nuevo dentro del array
     public void guardarListaVehiculo(Vehiculo nuevo) {
         listaVehiculos[temporal] = nuevo;
     }
@@ -160,7 +165,6 @@ public class Vehiculo {
         for (int i = 0; i < 3; i++) {
             System.out.print(numeros[i]);
         }
-        System.out.println("\n");
     }
 
     // Une los arreglos de la matricula (randomLetras y randomNumeros)
@@ -187,12 +191,6 @@ public class Vehiculo {
         setMatricula(getTipo() + "-" + sb.toString());
     }
 
-    // Imprime el array de vehiculos de la fase 2
-    public void mostrarListaVehiculos() {
-        System.out.println("\nID  |" + "\tMATRICULA\t" + "|\t\tMARCA\t\t|" + "\t\tMODELO\t\t" + "|\tMOTOR\t\t|" + "\tGASOLINA\t"
-                + "|\tRUEDAS\t\t|" + "\tPUERTAS\t\t" + "|\tPASAJEROS\t|");
-    }
-
     /**
      * @param tipo recibe el tipo que sera el vehiculo P = particular -> Carro M
      * = moto -> Moto B = bote -> Bote
@@ -204,7 +202,7 @@ public class Vehiculo {
             System.out.print("Modelo: ");
             setModelo(sc.nextLine());// 2010
             System.out.print("Marca: ");
-            setMarca(sc.nextLine().toLowerCase());//KIA
+            setMarca(sc.nextLine().toUpperCase());//KIA
             setTipo(tipo);
         }
     }

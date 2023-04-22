@@ -10,6 +10,10 @@ public class Carro extends Vehiculo {
 
     }
 
+    public void ejemplo() {
+
+    }
+
     public Carro(String gas, String motor, String modelo, String marca,
             String tipo, int ruedas, int puertas, int pasajeros) {
         super(gas, motor, modelo, marca, tipo, ruedas, puertas, pasajeros);
@@ -46,8 +50,8 @@ public class Carro extends Vehiculo {
             Thread.sleep(1000);
             System.out.println("Se registro el carro de forma exitosa!");
         } catch (InterruptedException e) {
-            System.out.println(e);
-        } catch(ArrayIndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("La lista de Vehiculo ya esta llena...");
             System.out.println("No puedes seguir ingresando vehiculos :(");
         }

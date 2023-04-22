@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author Daniel Noriega
  */
-public class MenuOpciones {
+public class MenuOpciones{
 
     Scanner sc = new Scanner(System.in);
 
