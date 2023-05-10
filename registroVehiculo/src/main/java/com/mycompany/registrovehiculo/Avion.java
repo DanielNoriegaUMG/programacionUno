@@ -50,13 +50,14 @@ public class Avion extends Vehiculo {
                 System.out.print("Numero de motores: "); numMotores = sc.nextInt();
                 validar = false;
             }catch(InputMismatchException e){
-                System.out.print("Deves ingresar un \"Numero\"\n"); sc.nextLine();
+                System.out.print("Deves ingresar un \"Numero\"\n");
             }
         }while(validar);
         boolean gas = true;
         // bucle para validar que se ingrese un tipo correcto de gasolina
+        sc.nextLine();
         while(gas){
-            System.out.print("Gasolina, (disel,regular,super): "); sc.nextLine();
+            System.out.print("Gasolina, (disel,regular,super): ");
             String aux = sc.nextLine().toLowerCase();
             if(aux.equalsIgnoreCase("disel") || aux.equalsIgnoreCase("regular") || aux.equalsIgnoreCase("super")){
                 gasolina = aux;

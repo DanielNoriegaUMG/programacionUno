@@ -189,11 +189,14 @@ public class MenuOpciones {
             case 'd':
                 // Ordenar Arreglo
                 ordenarArreglo();
-                System.out.println("\nArreglo Ordenado Exitosamente!!!");
+                System.out.println("\n¡¡¡Arreglo Ordenado Exitosamente!!!");
                 validar = true;
                 break;
             case 'e':
                 // Mostrar Todo el Arreglo
+                if(vehiculo.getContador()==0){
+                    System.out.println("\n¡¡¡Aun no hay Vehiculos Registrados!!!");
+                }
                 for (int i = 0; i < vehiculo.getContador(); i++) {
                     infoVehiculo(i);
                 }
@@ -348,24 +351,17 @@ public class MenuOpciones {
 
     // Metodo para mostrar datos del arreglo de vehiculos
     public void infoVehiculo(int i) {
-        if (vehiculo.nuevaLista == null) {
-            System.out.println("\nNo hay vehiculos registrados");
-        } else {
-            char tipo = vehiculo.nuevaLista[i].getTipo();
-            switch (tipo) {
-                case 'P':
-                    carro.infoCarro(i);
-                    break;
-                case 'B':
-                    balsa.infoBalsa(i);
-                    break;
-                case 'A':
-                    avion.infoAvion(i);
-                    break;
-                default:
-                    System.out.println("No hay letra: ");
-                    break;
-            }
+        char tipo = vehiculo.nuevaLista[i].getTipo();
+        switch (tipo) {
+            case 'P':
+                carro.infoCarro(i);
+                break;
+            case 'B':
+                balsa.infoBalsa(i);
+                break;
+            case 'A':
+                avion.infoAvion(i);
+                break;
         }
     }
 
@@ -393,7 +389,7 @@ public class MenuOpciones {
         } while (validar);
     }
 
-    public void menuDeOpciones(){
+    public void menuDeOpciones() {
         do {
             try {
                 menuPrincipal();
@@ -413,7 +409,7 @@ public class MenuOpciones {
                         System.out.println("\nHasta pronto!!!!");
                         System.exit(0);
                         break;
-                        
+
                     default:
                         System.out.println("La opcion no exixte");
                         break;

@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Vehiculo extends Object {
 
     Scanner sc = new Scanner(System.in);
-    protected static int contador = 1;
+    protected static int contador = 0;
     private char tipo;
     private int ID;
     private String matricula;
