@@ -11,4 +11,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <exec.mainClass>com.programacionuno.proyectoprogramacion.ProyectoProgramacion</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.database.xml</groupId>
+            <artifactId>xdb</artifactId>
+            <version>21.9.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
