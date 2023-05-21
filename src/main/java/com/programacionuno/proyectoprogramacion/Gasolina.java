@@ -2,7 +2,7 @@ package com.programacionuno.proyectoprogramacion;
 
 /**
  *
- * @author HP INTEL
+ * @author Daniel Noriega
  */
 public enum Gasolina {
     //SUPER(1), DIESEL(2), REGULAR(3), ESPECIAL(4);

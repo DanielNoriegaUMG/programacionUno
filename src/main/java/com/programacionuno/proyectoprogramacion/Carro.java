@@ -10,10 +10,6 @@ public class Carro extends Vehiculo {
 
     }
 
-    public void ejemplo() {
-
-    }
-
     public Carro(String gas, String motor, String modelo, String marca,
             String tipo, int ruedas, int puertas, int pasajeros) {
         super(gas, motor, modelo, marca, tipo, ruedas, puertas, pasajeros);
