@@ -13,9 +13,7 @@ import javax.persistence.Persistence;
  * @author Daniel Noriega UMG
  */
 public class JPAUtils {
-    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
-    
-    public static EntityManager getEntityManager(){
-        return factory.createEntityManager();
-    }
+//    public static EntityManager getEntityManager(){
+//        return factory.createEntityManager();
+//    }
 }

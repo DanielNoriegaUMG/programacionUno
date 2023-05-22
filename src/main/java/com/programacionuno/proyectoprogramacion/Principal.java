@@ -6,7 +6,6 @@ package com.programacionuno.proyectoprogramacion;
  *
  */
 public class Principal {
-
     public static void main(String[] args) {
         MenuOpciones menu = new MenuOpciones();
         menu.menuPrincipal();

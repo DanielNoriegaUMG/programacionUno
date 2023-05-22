@@ -4,6 +4,7 @@
  */
 package com.programacion.crud;
 
+import com.programacion.crud.Crear;
 import java.util.Scanner;
 
 /**
@@ -30,7 +31,8 @@ public class submenuDB {
     public void seleccionSubMenu(char opcion) {
         switch (opcion) {
             case 'a':
-
+                Crear newCar = new Crear();
+                newCar.guardarCarro();
                 break;
             case 'b':
 

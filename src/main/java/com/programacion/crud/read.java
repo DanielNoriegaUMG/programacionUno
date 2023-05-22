@@ -8,6 +8,6 @@ package com.programacion.crud;
  *
  * @author Daniel Noriega UMG
  */
-public class read {
+public class Read {
     
 }

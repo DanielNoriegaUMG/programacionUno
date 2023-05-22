@@ -38,7 +38,10 @@ public class CarsJpaController implements Serializable {
             em.getTransaction().begin();
             em.persist(cars);
             em.getTransaction().commit();
-        } finally {
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            e.getStackTrace();
+        }finally {
             if (em != null) {
                 em.close();
             }

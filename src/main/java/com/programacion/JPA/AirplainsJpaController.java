@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author alumno
+ * @author Daniel Noriega UMG
  */
 public class AirplainsJpaController implements Serializable {
 

@@ -1,5 +1,6 @@
 package com.programacionuno.proyectoprogramacion;
 
+import com.programacion.crud.submenuDB;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -154,7 +155,7 @@ public class MenuOpciones{
             try {
                 System.out.println("1. Primera Fase - Objetos y recursividad");
                 System.out.println("2. Fase 2 - Arreglos");
-                System.out.println("3. Tercera Fase");
+                System.out.println("3. Fase 3 - Base de datos");
                 System.out.println("4. Salir del sistema");
                 System.out.print("Digite una opcion: ");
                 setFase(sc.nextInt());
@@ -166,7 +167,8 @@ public class MenuOpciones{
                         subMenuFaseDos();
                         break;
                     case 3:
-                        System.out.println("Proximamente...");
+                        submenuDB submenu = new submenuDB();
+                        submenu.seleccionar();
                         break;
                     case 4:
                         System.out.println("Saliendo del sistema");

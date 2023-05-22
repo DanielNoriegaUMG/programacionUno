@@ -6,10 +6,10 @@
     <class>com.programacion.db.Cars</class>
     <class>com.programacion.db.Airplains</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:umg"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="SYSTEM"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.password" value="Umg$2023"/>
+      <property name="javax.persistence.jdbc.password" value="serverOracle"/>
     </properties>
   </persistence-unit>
 </persistence>
