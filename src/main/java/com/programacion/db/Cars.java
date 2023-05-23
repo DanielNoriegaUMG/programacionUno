@@ -30,11 +30,9 @@ import javax.persistence.UniqueConstraint;
 public class Cars implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID", nullable = false, precision = 38, scale = 0)
+    @Column(name = "ID", precision = 38, scale = 0)
     private BigDecimal id;
     @Basic(optional = false)
     @Column(name = "MATRICULA", nullable = false, length = 8)
@@ -158,7 +156,9 @@ public class Cars implements Serializable {
 
     @Override
     public String toString() {
-        return "com.programacion.db.Cars[ id=" + id + " ]";
+//        return "com.programacion.db.Cars[ id=" + id + " ]";
+        String txt = getMatricula() + " " + getMarca() + " " + getMotor() + " " + getGasolina() + " " + getModelo() + " " + getRuedas() + " " +  getPuertas();
+        return txt;
     }
     
 }

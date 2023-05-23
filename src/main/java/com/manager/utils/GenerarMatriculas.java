@@ -34,8 +34,7 @@ public class GenerarMatriculas {
         return numeros;
     }
     
-    public void nuevaMatricula(String tipo) {
-        Cars carro = new Cars();
+    public String nuevaMatricula(String tipo) {
         int[] indexLetras = randomLetrasMatricula();
         int[] numeros = randomNumerosMatricula();
         Object[] matriculas = new Object[indexLetras.length + numeros.length];
@@ -55,7 +54,6 @@ public class GenerarMatriculas {
         for (int i = 0; i < matriculas.length; i++) {
             sb.append(matriculas[i]);
         }
-        
-        carro.setMatricula(tipo + "-" + sb.toString());
+        return tipo + "-" + sb.toString();
     }
 }

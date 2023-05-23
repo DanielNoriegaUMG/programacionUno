@@ -9,10 +9,12 @@ import com.programacion.JPA.CarsJpaController;
 import com.programacion.db.Cars;
 import com.programacionuno.proyectoprogramacion.Bote;
 import com.programacionuno.proyectoprogramacion.Gasolina;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
@@ -23,13 +25,11 @@ public class Crear {
 
     public void guardarCarro() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
         Scanner sc = new Scanner(System.in);
+//        CarsJpaController nuevoCarro = new CarsJpaController(emf);
+        EntityManager em = emf.createEntityManager();
         Cars carro = new Cars();
-        CarsJpaController nuevoCarro = new CarsJpaController(emf);
         boolean validar = true; //condicion para iniciar el bucle
-        String motor, marca, gas = null;
-        BigInteger modelo;
         System.out.print("Escriba el nombre del motor: ");
         carro.setMotor(sc.nextLine());// motor ultimo modelo 3.2
         System.out.print("Marca: ");
@@ -37,9 +37,6 @@ public class Crear {
         System.out.print("Modelo: ");
         carro.setModelo(sc.nextBigInteger());// 2010
         sc.nextLine();
-        motor = carro.getMotor();
-        modelo = carro.getModelo();
-        marca = carro.getMarca();
 
         do {
             System.out.println("Tipo que gasolina que utiliza");
@@ -47,7 +44,6 @@ public class Crear {
             carro.setGasolina(sc.nextLine().toUpperCase());
             try {
                 Gasolina nombreGas = Gasolina.valueOf(carro.getGasolina());
-                gas = carro.getGasolina().toLowerCase(); //pasar a minusculas para el array
                 validar = false; // salir del bucle
             } catch (IllegalArgumentException e) {
                 System.out.println("El tipo de gasolina ingresado no existe");
@@ -60,11 +56,26 @@ public class Crear {
         try {
             Thread.sleep(1000);
             GenerarMatriculas crearMatricula = new GenerarMatriculas();
-            crearMatricula.nuevaMatricula("P");
-            nuevoCarro.create(carro);
-            System.out.println("Se registro el carro de forma exitosa!");
+            String matricula = crearMatricula.nuevaMatricula("P");
+            carro.setMatricula(matricula);
+            carro.setPuertas(BigInteger.valueOf(4));
+            carro.setRuedas(BigInteger.valueOf(4));
+            //System.out.println(carro);
         } catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            throw new RuntimeException(e);
+        }
+
+        try {
+            em.getTransaction().begin();
+            em.persist(carro);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.getStackTrace();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
 

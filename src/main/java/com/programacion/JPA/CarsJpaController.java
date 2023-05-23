@@ -22,10 +22,10 @@ import javax.persistence.criteria.Root;
  */
 public class CarsJpaController implements Serializable {
 
+    private EntityManagerFactory emf = null;
     public CarsJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
