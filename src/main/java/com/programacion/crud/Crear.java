@@ -24,6 +24,10 @@ import javax.persistence.Persistence;
 public class Crear {
 
     public void guardarCarro() {
+        
+        
+        
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
         Scanner sc = new Scanner(System.in);
 //        CarsJpaController nuevoCarro = new CarsJpaController(emf);
@@ -34,10 +38,9 @@ public class Crear {
         carro.setMotor(sc.nextLine());// motor ultimo modelo 3.2
         System.out.print("Marca: ");
         carro.setMarca(sc.nextLine().toUpperCase());//KIA
-        System.out.print("Modelo: ");
+        System.out.print("Modelo (en numeros): ");
         carro.setModelo(sc.nextBigInteger());// 2010
-        sc.nextLine();
-
+        
         do {
             System.out.println("Tipo que gasolina que utiliza");
             System.out.println("(super, diesel, regular, especial): ");

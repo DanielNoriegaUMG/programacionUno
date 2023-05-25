@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -24,14 +25,44 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "CARS", catalog = "", schema = "SYSTEM", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"MATRICULA"})})
+@UniqueConstraint(columnNames = {"MATRICULA"})})
 @NamedQueries({
     @NamedQuery(name = "Cars.findAll", query = "SELECT c FROM Cars c")})
 public class Cars implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
+    /*
+    
+    
+CREATE TABLE cars(
+id int not null primary key,
+matricula VARCHAR(8) NOT NULL UNIQUE,
+marca VARCHAR(30) NOT NULL,
+modelo INTEGER NULL,
+motor VARCHAR(25) NULL,
+gasolina VARCHAR(20) NOT NULL,
+ruedas INTEGER NOT NULL,
+puertas INTEGER NOT NULL
+);
+
+CREATE SEQUENCE CARS_ID
+  MINVALUE 1
+  MAXVALUE 9999999999
+  START WITH 1
+  INCREMENT BY 1;
+
+    
+    
+    */
+    
+    
+    
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CARS_SEQUENCE_GENERATOR")
+    @SequenceGenerator(name="CARS_SEQUENCE_GENERATOR", sequenceName="CARS_ID", allocationSize=1)
     @Column(name = "ID", precision = 38, scale = 0)
     private BigDecimal id;
     @Basic(optional = false)
