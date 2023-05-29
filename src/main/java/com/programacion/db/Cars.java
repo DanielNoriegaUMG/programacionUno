@@ -25,7 +25,7 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "CARS", catalog = "", schema = "SYSTEM", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"MATRICULA"})})
+@UniqueConstraint(columnNames = {"MATRICULA"})})
 @NamedQueries({
     @NamedQuery(name = "Cars.findAll", query = "SELECT c FROM Cars c")})
 public class Cars implements Serializable {

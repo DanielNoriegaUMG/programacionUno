@@ -28,11 +28,44 @@ public class submenuDB {
         System.out.print("\nDigite la opcion: ");
     }
 
-    public void seleccionSubMenu(char opcion) {
-        switch (opcion) {
-            case 'a':
+    public void opcionCrud(int op) {
+        switch (op) {
+            case 1:
                 Crear newCar = new Crear();
                 newCar.guardarCarro();
+                break;
+            case 2:
+                Read lista = new Read();
+                lista.listarCarros();
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            default:
+                System.out.println("Opcion no valida...");
+        }
+
+    }
+
+    public void seleccionSubMenu(char opcion) {
+        Scanner sc = new Scanner(System.in);
+        int accion;
+        switch (opcion) {
+            case 'a':
+                System.out.println("1. Crear");
+                System.out.println("2. Mostrar todos");
+                System.out.println("3. Buscar por ID");
+                System.out.println("4. Editar");
+                System.out.println("5. Eliminar");
+                System.out.print("\nDigita tu opcion: ");
+                accion = sc.nextInt();
+                opcionCrud(accion);
                 break;
             case 'b':
 
