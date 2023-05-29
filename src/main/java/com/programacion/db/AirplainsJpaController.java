@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.programacion.JPA;
+package com.programacion.db;
 
 import com.programacion.JPA.exceptions.NonexistentEntityException;
 import com.programacion.db.Airplains;
@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author Daniel Noriega UMG
+ * @author HP INTEL
  */
 public class AirplainsJpaController implements Serializable {
 
