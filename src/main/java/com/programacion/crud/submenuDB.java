@@ -39,7 +39,8 @@ public class submenuDB {
                 lista.listarCarros();
                 break;
             case 3:
-
+                Read buscar = new Read();
+                buscar.buscarCarro();
                 break;
             case 4:
                 Update update = new Update();

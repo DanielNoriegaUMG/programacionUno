@@ -25,7 +25,7 @@ public class Update {
         EntityManager em = emf.createEntityManager();
 
         CarsJpaController carJPA = new CarsJpaController(emf);
-        Cars update = new Cars();
+//        Cars update = new Cars();
         System.out.print("Digite el ID del carro a actualizar: ");
         BigDecimal findId = sc.nextBigDecimal();
         try{
