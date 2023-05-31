@@ -47,7 +47,8 @@ public class submenuDB {
                 update.ActualizarCarro();
                 break;
             case 5:
-
+                Delete delete = new Delete();
+                delete.eliminarCarro();
                 break;
             default:
                 System.out.println("Opcion no valida...");
