@@ -53,12 +53,13 @@ public class CarsJpaController implements Serializable {
             em.getTransaction().begin();
             cars = em.merge(cars);
             em.getTransaction().commit();
+            System.out.println("Los registros del carro se actualizaron con exito!");
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 BigDecimal id = cars.getId();
                 if (findCars(id) == null) {
-                    throw new NonexistentEntityException("The cars with id " + id + " no longer exists.");
+                    throw new NonexistentEntityException("El carro con ID " + id + " no existe dentro de los registros del sistema.");
                 }
             }
             throw ex;
@@ -79,7 +80,7 @@ public class CarsJpaController implements Serializable {
                 cars = em.getReference(Cars.class, id);
                 cars.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The cars with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("El carro con el ID" + id + " no existe dentro de los registros del sistema.", enfe);
             }
             em.remove(cars);
             em.getTransaction().commit();

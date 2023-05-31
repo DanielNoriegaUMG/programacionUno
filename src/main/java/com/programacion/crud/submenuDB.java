@@ -42,7 +42,8 @@ public class submenuDB {
 
                 break;
             case 4:
-
+                Update update = new Update();
+                update.ActualizarCarro();
                 break;
             case 5:
 

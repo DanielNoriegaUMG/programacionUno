@@ -9,7 +9,6 @@ import com.programacion.db.Cars;
 import com.programacion.db.CarsJpaController;
 import com.programacionuno.proyectoprogramacion.Bote;
 import com.programacionuno.proyectoprogramacion.Gasolina;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
@@ -29,13 +28,6 @@ public class Crear {
         CarsJpaController carroJPA = new CarsJpaController(emf);
 
         Cars carro = new Cars();
-//        carro.setMarca("honda");
-//        carro.setMatricula("P-DEN108");
-//        carro.setModelo(BigInteger.valueOf(2020));
-//        carro.setMotor("v.8");
-//        carro.setPuertas(BigInteger.valueOf(4));
-//        carro.setRuedas(BigInteger.valueOf(4));
-//        carro.setGasolina("SUPER");
         boolean validar = true; //condicion para iniciar el bucle
         System.out.print("Escriba el nombre del motor: ");
         carro.setMotor(sc.nextLine());// motor ultimo modelo 3.2
