@@ -128,7 +128,6 @@ public class Update {
 
             } else if (modificar.equalsIgnoreCase("no")) {
                 validar = false;
-                carroActualizar.setGasolina("ESPECIAL");
             } else {
                 System.out.println("opcion no valida, intentalo de nuevo");
             }
