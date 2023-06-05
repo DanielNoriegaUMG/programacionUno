@@ -28,7 +28,7 @@ public class submenuDB {
         System.out.print("\nDigite la opcion: ");
     }
 
-    public void opcionCrud(int op) {
+    public void opcionCrudCarro(int op) {
         switch (op) {
             case 1:
                 Crear newCar = new Crear();
@@ -56,6 +56,33 @@ public class submenuDB {
 
     }
 
+    public void opcionCrudBalsa(int op) {
+        switch (op) {
+            case 1:
+                Crear nuevaBalsa = new Crear();
+                nuevaBalsa.guardarBalsa();
+                break;
+            case 2:
+//                Read lista = new Read();
+//                lista.listarCarros();
+                break;
+            case 3:
+//                Read buscar = new Read();
+//                buscar.buscarCarro();
+                break;
+            case 4:
+//                Update update = new Update();
+//                update.ActualizarCarro();
+                break;
+            case 5:
+//                Delete delete = new Delete();
+//                delete.eliminarCarro();
+                break;
+            default:
+                System.out.println("Opcion no valida...");
+        }
+    }
+
     public void seleccionSubMenu(char opcion) {
         Scanner sc = new Scanner(System.in);
         int accion;
@@ -68,10 +95,17 @@ public class submenuDB {
                 System.out.println("5. Eliminar");
                 System.out.print("\nDigita tu opcion: ");
                 accion = sc.nextInt();
-                opcionCrud(accion);
+                opcionCrudCarro(accion);
                 break;
             case 'b':
-
+                System.out.println("1. Crear");
+                System.out.println("2. Mostrar todos");
+                System.out.println("3. Buscar por ID");
+                System.out.println("4. Editar");
+                System.out.println("5. Eliminar");
+                System.out.print("\nDigita tu opcion: ");
+                accion = sc.nextInt();
+                opcionCrudBalsa(accion);
                 break;
             case 'c':
 

@@ -31,5 +31,12 @@ public class Delete {
             throw new RuntimeException(e);
         }
     }
-
+    
+    public void eliminarBalsa(){
+        
+    }
+    
+    public void eliminarAvion(){
+        
+    }
 }

@@ -5,6 +5,8 @@
 package com.programacion.crud;
 
 import com.manager.utils.GenerarMatriculas;
+import com.programacion.db.Boats;
+import com.programacion.db.BoatsJpaController;
 import com.programacion.db.Cars;
 import com.programacion.db.CarsJpaController;
 import com.programacionuno.proyectoprogramacion.Bote;
@@ -75,7 +77,74 @@ public class Crear {
     }
 
     public void guardarBalsa() {
-        Bote bote = new Bote();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
+        Scanner sc = new Scanner(System.in);
+        EntityManager em = emf.createEntityManager();
+        BoatsJpaController balsaJPA = new BoatsJpaController(emf);
+        Boats balsa = new Boats();
+
+        String tieneMotor;
+        System.out.println("¿El bote tiene motor?");
+        System.out.print("(si/no): ");
+        tieneMotor = sc.nextLine();
+        if (tieneMotor.equalsIgnoreCase("si")) {
+            String gas = null;
+            boolean validar = true; //condicion para iniciar el bucle
+            balsa.setRemos((short) 0);
+            do {
+                System.out.println("Tipo que gasolina que utiliza");
+                System.out.println("(super, diesel, regular, especial): ");
+                balsa.setGasolina(sc.nextLine().toUpperCase());
+                try {
+                    Gasolina nombreGas = Gasolina.valueOf(balsa.getGasolina());
+                    gas = balsa.getGasolina().toLowerCase(); //pasar a minusculas para el array
+                    validar = false; // salir del bucle
+                } catch (IllegalArgumentException e) {
+                    System.out.println("El tipo de gasolina ingresado no existe");
+                    System.out.println("Intente de nuevo...");
+                }
+            } while (validar);
+
+            try {
+                System.out.print("\nEscribe la marca de la balsa: ");
+                balsa.setMarca(sc.nextLine());
+                System.out.println("Generando matricula");
+                System.out.println("Espere...");
+                GenerarMatriculas crearMatricula = new GenerarMatriculas();
+                String matricula = crearMatricula.nuevaMatricula("B");
+                balsa.setMatricula(matricula);
+                balsaJPA.create(balsa);
+                Thread.sleep(1000);
+                System.out.println("Se registro el carro de forma exitosa!");
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            } catch(Exception e){
+                throw new RuntimeException(e);
+            }
+        } else if (tieneMotor.equalsIgnoreCase("no")) {
+
+            System.out.print("\nEscribe la marca de la balsa: ");
+            balsa.setMarca(sc.nextLine());
+            System.out.println("Generando matricula");
+            System.out.println("Espere...");
+            balsa.setRemos((short) 1);
+            try {
+                balsa.setMotor("SIN MOTOR");
+                balsa.setGasolina("NO USA");
+                GenerarMatriculas crearMatricula = new GenerarMatriculas();
+                String matricula = crearMatricula.nuevaMatricula("B");
+                balsa.setMatricula(matricula);
+                balsaJPA.create(balsa);
+                Thread.sleep(1000);
+                System.out.println("Se registro la balsa de forma exitosa!");
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            } catch(Exception e){
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Error al ingresar opcion de motor, intentalo de nuevo");
+        }
     }
 
     public void guardarAvion() {

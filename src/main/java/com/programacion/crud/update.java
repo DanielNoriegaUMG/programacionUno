@@ -39,6 +39,14 @@ public class Update {
         }
 
     }
+    
+    public void actualizarBalsa(){
+        
+    }
+    
+    public void actualizarAvion(){
+        
+    }
 
     public static void datosParaModificar(Cars carroActualizar, Scanner sc) {
         nuevoMotor(carroActualizar, sc);

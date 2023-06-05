@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 
 /**
  *
- * @author HP INTEL
+ * @author Daniel Noriega
  */
 @Entity
 @Table(name = "BOATS", catalog = "", schema = "SYSTEM", uniqueConstraints = {

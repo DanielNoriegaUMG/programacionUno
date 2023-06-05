@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author HP INTEL
+ * @author Daniel Noriega
  */
 public class CarsJpaController implements Serializable {
 

@@ -18,7 +18,7 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author HP INTEL
+ * @author Daniel Noriega
  */
 public class BoatsJpaController implements Serializable {
 
@@ -38,6 +38,7 @@ public class BoatsJpaController implements Serializable {
             em.getTransaction().begin();
             em.persist(boats);
             em.getTransaction().commit();
+            System.out.println("Balsa agregada de forma exitosa!");
         } finally {
             if (em != null) {
                 em.close();

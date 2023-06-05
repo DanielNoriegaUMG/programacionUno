@@ -73,4 +73,20 @@ public class Read {
             System.out.println("No se encontro el carro con ID: " +  encontrado);
         }   
     }
+    
+    public void listarBalsas(){
+        
+    }
+    
+    public void buscarBalsa(){
+        
+    }
+    
+    public void listarAviones(){
+        
+    }
+    
+    public void buscarAvion(){
+        
+    }
 }
