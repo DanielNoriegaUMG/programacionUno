@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
  *
  * @author Daniel Noriega UMG
  */
-public class Read {
+public class Leer {
 
     public void listarCarros(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");

@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  *
  * @author Daniel Noriega UMG
  */
-public class Delete {
+public class Eliminar {
 
     public void eliminarCarro() {
         Scanner sc = new Scanner(System.in);

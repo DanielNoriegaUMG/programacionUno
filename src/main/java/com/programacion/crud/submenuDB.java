@@ -35,19 +35,19 @@ public class submenuDB {
                 newCar.guardarCarro();
                 break;
             case 2:
-                Read lista = new Read();
+                Leer lista = new Leer();
                 lista.listarCarros();
                 break;
             case 3:
-                Read buscar = new Read();
+                Leer buscar = new Leer();
                 buscar.buscarCarro();
                 break;
             case 4:
-                Update update = new Update();
+                Actualizar update = new Actualizar();
                 update.ActualizarCarro();
                 break;
             case 5:
-                Delete delete = new Delete();
+                Eliminar delete = new Eliminar();
                 delete.eliminarCarro();
                 break;
             default:
@@ -63,19 +63,19 @@ public class submenuDB {
                 nuevaBalsa.guardarBalsa();
                 break;
             case 2:
-//                Read lista = new Read();
+//                Leer lista = new Leer();
 //                lista.listarCarros();
                 break;
             case 3:
-//                Read buscar = new Read();
+//                Leer buscar = new Leer();
 //                buscar.buscarCarro();
                 break;
             case 4:
-//                Update update = new Update();
+//                Actualizar update = new Actualizar();
 //                update.ActualizarCarro();
                 break;
             case 5:
-//                Delete delete = new Delete();
+//                Eliminar delete = new Eliminar();
 //                delete.eliminarCarro();
                 break;
             default:

@@ -17,7 +17,7 @@ import javax.persistence.Persistence;
  *
  * @author Daniel Noriega UMG
  */
-public class Update {
+public class Actualizar {
 
     public void ActualizarCarro() {
         Scanner sc = new Scanner(System.in);
