@@ -13,7 +13,10 @@ import javax.persistence.Persistence;
  * @author Daniel Noriega UMG
  */
 public class JPAUtils {
-//    public static EntityManager getEntityManager(){
-//        return factory.createEntityManager();
-//    }
+
+    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("daniel_denc"); // viene de la opcion de xml
+
+    public static EntityManager getEntityManager() {
+        return factory.createEntityManager();
+    }
 }
