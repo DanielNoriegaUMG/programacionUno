@@ -5,11 +5,12 @@
 package com.programacion.crud;
 
 import com.manager.utils.GenerarMatriculas;
+import com.programacion.db.Airplains;
+import com.programacion.db.AirplainsJpaController;
 import com.programacion.db.Boats;
 import com.programacion.db.BoatsJpaController;
 import com.programacion.db.Cars;
 import com.programacion.db.CarsJpaController;
-import com.programacionuno.proyectoprogramacion.Bote;
 import com.programacionuno.proyectoprogramacion.Gasolina;
 import java.math.BigInteger;
 import java.util.Scanner;
@@ -118,7 +119,7 @@ public class Crear {
                 System.out.println("Se registro el carro de forma exitosa!");
             } catch (InterruptedException e) {
                 System.out.println(e);
-            } catch(Exception e){
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         } else if (tieneMotor.equalsIgnoreCase("no")) {
@@ -139,7 +140,7 @@ public class Crear {
                 System.out.println("Se registro la balsa de forma exitosa!");
             } catch (InterruptedException e) {
                 System.out.println(e);
-            } catch(Exception e){
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         } else {
@@ -148,6 +149,62 @@ public class Crear {
     }
 
     public void guardarAvion() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
+        Scanner sc = new Scanner(System.in);
+        EntityManager em = emf.createEntityManager();
+        AirplainsJpaController avionJPA = new AirplainsJpaController(emf);
+        Airplains avion = new Airplains();
+        boolean validar = true; //condicion para iniciar el bucle
 
+        try {
+            System.out.print("Ingrese la marca del avion: ");
+            avion.setMarca(sc.nextLine().toUpperCase());
+            System.out.println("Ingrese motor del avion: ");
+            avion.setMotor(sc.nextLine().toUpperCase());
+            System.out.print("Ingrese el modelo del avion: ");
+            avion.setModelo(sc.nextBigInteger());
+            sc.nextLine();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        do {
+            System.out.println("Tipo que gasolina que utiliza");
+            System.out.println("(super, diesel, regular, especial): ");
+            avion.setGasolina(sc.nextLine().toUpperCase());
+            try {
+                Gasolina nombreGas = Gasolina.valueOf(avion.getGasolina());
+                avion.getGasolina().toLowerCase(); //pasar a minusculas para el array
+                validar = false; // salir del bucle
+            } catch (IllegalArgumentException e) {
+                System.out.println("El tipo de gasolina ingresado no existe");
+                System.out.println("Intente de nuevo...");
+            }
+        } while (validar);
+
+        try {
+            System.out.println("Digita el numero de pasajeros del avion: ");
+            avion.setNumPasajeros(sc.nextBigInteger());
+        } catch (NumberFormatException e) {
+            System.out.println("Debes de ingresar la cantidad de pasajeros en numeros...");
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al ingresar el numero de pasajeros...");
+        }
+
+        System.out.println("Generando matricula");
+        System.out.println("Espere...");
+        try {
+            GenerarMatriculas crearMatricula = new GenerarMatriculas();
+            String matricula = crearMatricula.nuevaMatricula("A");
+            avion.setMatricula(matricula);
+            avionJPA.create(avion);
+            Thread.sleep(1000);
+            System.out.println("Se registro el avion de forma exitosa!");
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("La lista de Vehiculo ya esta llena...");
+            System.out.println("No puedes seguir ingresando vehiculos :(");
+        }
     }
 }

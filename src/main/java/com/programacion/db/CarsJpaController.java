@@ -84,7 +84,7 @@ public class CarsJpaController implements Serializable {
             }
             em.remove(cars);
             em.getTransaction().commit();
-            System.out.println("El carro se ha eliminado de la base de datos");
+            System.out.println("Carro eliminado");
         } finally {
             if (em != null) {
                 em.close();

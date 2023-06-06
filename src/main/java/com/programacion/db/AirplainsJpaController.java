@@ -38,6 +38,7 @@ public class AirplainsJpaController implements Serializable {
             em.getTransaction().begin();
             em.persist(airplains);
             em.getTransaction().commit();
+            System.out.println("El avion se registro de manera exitosa!");
         } finally {
             if (em != null) {
                 em.close();
@@ -52,12 +53,13 @@ public class AirplainsJpaController implements Serializable {
             em.getTransaction().begin();
             airplains = em.merge(airplains);
             em.getTransaction().commit();
+            System.out.println("Datos del avion actualizados exitosamente!");
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 BigDecimal id = airplains.getId();
                 if (findAirplains(id) == null) {
-                    throw new NonexistentEntityException("The airplains with id " + id + " no longer exists.");
+                    throw new NonexistentEntityException("El Avion con ID " + id + " no se encuentra.");
                 }
             }
             throw ex;
@@ -78,10 +80,11 @@ public class AirplainsJpaController implements Serializable {
                 airplains = em.getReference(Airplains.class, id);
                 airplains.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The airplains with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("El avion con ID " + id + " no existe.", enfe);
             }
             em.remove(airplains);
             em.getTransaction().commit();
+            System.out.println("Avion eliminado de forma exitosa!");
         } finally {
             if (em != null) {
                 em.close();

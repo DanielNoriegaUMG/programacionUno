@@ -53,6 +53,7 @@ public class BoatsJpaController implements Serializable {
             em.getTransaction().begin();
             boats = em.merge(boats);
             em.getTransaction().commit();
+            System.out.println("Balsa actualizada con exito!");
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
@@ -79,10 +80,11 @@ public class BoatsJpaController implements Serializable {
                 boats = em.getReference(Boats.class, id);
                 boats.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The boats with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("La balsa con ID " + id + " no existe en los registros.", enfe);
             }
             em.remove(boats);
             em.getTransaction().commit();
+            System.out.println("Balsa eliminada");
         } finally {
             if (em != null) {
                 em.close();

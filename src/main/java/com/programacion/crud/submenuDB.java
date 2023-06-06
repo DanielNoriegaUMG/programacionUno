@@ -5,6 +5,7 @@
 package com.programacion.crud;
 
 import com.programacion.crud.Crear;
+import com.programacionuno.proyectoprogramacion.MenuOpciones;
 import java.util.Scanner;
 
 /**
@@ -63,20 +64,47 @@ public class submenuDB {
                 nuevaBalsa.guardarBalsa();
                 break;
             case 2:
-//                Leer lista = new Leer();
-//                lista.listarCarros();
+                Leer lista = new Leer();
+                lista.listarBalsas();
                 break;
             case 3:
-//                Leer buscar = new Leer();
-//                buscar.buscarCarro();
+                Leer buscar = new Leer();
+                buscar.buscarBalsa();
                 break;
             case 4:
-//                Actualizar update = new Actualizar();
-//                update.ActualizarCarro();
+                Actualizar update = new Actualizar();
+                update.actualizarBalsa();
                 break;
             case 5:
-//                Eliminar delete = new Eliminar();
-//                delete.eliminarCarro();
+                Eliminar delete = new Eliminar();
+                delete.eliminarBalsa();
+                break;
+            default:
+                System.out.println("Opcion no valida...");
+        }
+    }
+
+    public void opcionCrudAvion(int op) {
+        switch (op) {
+            case 1:
+                Crear nuevoAvion = new Crear();
+                nuevoAvion.guardarAvion();
+                break;
+            case 2:
+                Leer lista = new Leer();
+                lista.listarAviones();
+                break;
+            case 3:
+                Leer buscar = new Leer();
+                buscar.buscarAvion();
+                break;
+            case 4:
+                Actualizar update = new Actualizar();
+                update.actualizarAvion();
+                break;
+            case 5:
+                Eliminar delete = new Eliminar();
+                delete.eliminarAvion();
                 break;
             default:
                 System.out.println("Opcion no valida...");
@@ -88,33 +116,35 @@ public class submenuDB {
         int accion;
         switch (opcion) {
             case 'a':
-                System.out.println("1. Crear");
-                System.out.println("2. Mostrar todos");
-                System.out.println("3. Buscar por ID");
-                System.out.println("4. Editar");
-                System.out.println("5. Eliminar");
-                System.out.print("\nDigita tu opcion: ");
+                imprimirMetodosCRUD();
                 accion = sc.nextInt();
                 opcionCrudCarro(accion);
                 break;
             case 'b':
-                System.out.println("1. Crear");
-                System.out.println("2. Mostrar todos");
-                System.out.println("3. Buscar por ID");
-                System.out.println("4. Editar");
-                System.out.println("5. Eliminar");
-                System.out.print("\nDigita tu opcion: ");
+                imprimirMetodosCRUD();
                 accion = sc.nextInt();
                 opcionCrudBalsa(accion);
                 break;
             case 'c':
-
+                imprimirMetodosCRUD();
+                accion = sc.nextInt();
+                opcionCrudAvion(accion);
                 break;
             case 'd':
-
+                MenuOpciones inicio = new MenuOpciones();
+                inicio.menuPrincipal();
                 break;
             default:
-                throw new AssertionError();
+                System.out.println("Opcion invalida, intentalo de nuevo...");
         }
+    }
+
+    private void imprimirMetodosCRUD() {
+        System.out.println("1. Crear");
+        System.out.println("2. Mostrar todos");
+        System.out.println("3. Buscar por ID");
+        System.out.println("4. Editar");
+        System.out.println("5. Eliminar");
+        System.out.print("\nDigita tu opcion: ");
     }
 }
