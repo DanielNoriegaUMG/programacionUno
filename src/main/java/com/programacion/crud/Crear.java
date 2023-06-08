@@ -91,7 +91,7 @@ public class Crear {
         if (tieneMotor.equalsIgnoreCase("si")) {
             String gas = null;
             boolean validar = true; //condicion para iniciar el bucle
-            balsa.setRemos((short) 0);
+            balsa.setRemos((short) 1);
             do {
                 System.out.println("Tipo que gasolina que utiliza");
                 System.out.println("(super, diesel, regular, especial): ");
@@ -128,7 +128,7 @@ public class Crear {
             balsa.setMarca(sc.nextLine());
             System.out.println("Generando matricula");
             System.out.println("Espere...");
-            balsa.setRemos((short) 1);
+            balsa.setRemos((short) 0);
             try {
                 balsa.setMotor("SIN MOTOR");
                 balsa.setGasolina("NO USA");

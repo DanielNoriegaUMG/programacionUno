@@ -24,6 +24,21 @@ import javax.persistence.Persistence;
  */
 public class Leer {
 
+    public void imprimirColumnas() {
+        System.out.printf("%-4s | "
+                + "%-10s | "
+                + "%-15s | "
+                + "%-15s | "
+                + "%-10s | "
+                + "%-10s | ",
+                "ID",
+                "MATRICULA",
+                "MARCA",
+                "MODELO",
+                "MOTOR",
+                "GASOLINA");
+    }
+
     public void listarCarros() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.programacionUno_proyectoProgramacion_jar_1.0-SNAPSHOTPU");
         EntityManager em = emf.createEntityManager();
@@ -37,17 +52,31 @@ public class Leer {
             e.printStackTrace();
         }
 
+        imprimirColumnas();
+        System.out.printf("%-8s | "
+                + "%-8s",
+                "PUERTAS",
+                "RUEDAS\n");
+
         for (Cars car : carros) {
-            System.out.println("ID: " + car.getId());
-            System.out.println("MATRICULA: " + car.getMatricula());
-            System.out.println("MARCA: " + car.getMarca());
-            System.out.println("MODELO: " + car.getModelo());
-            System.out.println("MOTOR: " + car.getMotor());
-            System.out.println("GASOLINA: " + car.getGasolina());
-            System.out.println("RUEDAS: " + car.getRuedas());
-            System.out.println("PUERTAS: " + car.getPuertas());
-            System.out.println("");
+            System.out.printf("%-4s| "
+                    + "%-10s | "
+                    + "%-15s | "
+                    + "%-15s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-8d | "
+                    + "%-8d | ",
+                    car.getId(),
+                    car.getMatricula(),
+                    car.getMarca(),
+                    car.getModelo(),
+                    car.getMotor(),
+                    car.getGasolina().toString(),
+                    car.getPuertas(),
+                    car.getRuedas());
         }
+        System.out.println("\n\n");
     }
 
     public void buscarCarro() {
@@ -64,15 +93,31 @@ public class Leer {
         if (encontrado != null) {
             busqueda.add(encontrado);
 
+            imprimirColumnas();
+            System.out.printf("%-8s | "
+                    + "%-8s",
+                    "PUERTAS",
+                    "RUEDAS\n");
+
             for (Cars mostrar : busqueda) {
-                System.out.println("ID: " + mostrar.getId());
-                System.out.println("MATRICULA: " + mostrar.getMatricula());
-                System.out.println("MARCA: " + mostrar.getMarca());
-                System.out.println("MODELO: " + mostrar.getModelo());
-                System.out.println("MOTOR: " + mostrar.getMotor());
-                System.out.println("PUERTAS: " + mostrar.getPuertas());
-                System.out.println("RUEDAS: " + mostrar.getRuedas());
+                System.out.printf("%-4s| "
+                        + "%-10s | "
+                        + "%-15s | "
+                        + "%-15s | "
+                        + "%-10s | "
+                        + "%-10s | "
+                        + "%-8d | "
+                        + "%-8d | ",
+                        encontrado.getId(),
+                        encontrado.getMatricula(),
+                        encontrado.getMarca(),
+                        encontrado.getModelo(),
+                        encontrado.getMotor(),
+                        encontrado.getGasolina().toString(),
+                        encontrado.getPuertas(),
+                        encontrado.getRuedas());
             }
+            System.out.println("\n\n");
         } else {
             System.out.println("No se encontro el carro con ID: " + id);
         }
@@ -91,21 +136,45 @@ public class Leer {
             e.printStackTrace();
         }
 
+        System.out.printf("%-4s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-5s\n",
+                "ID",
+                "MATRICULA",
+                "MARCA",
+                "MOTOR",
+                "GASOLINA",
+                "REMOS");
+
         for (Boats boat : botes) {
-            System.out.println("ID: " + boat.getId());
-            System.out.println("MATRICULA: " + boat.getMatricula());
-            System.out.println("MARCA: " + boat.getMarca());
-            System.out.println("MOTOR: " + boat.getMotor());
-            System.out.println("GASOLINA: " + boat.getGasolina());
             short tieneRemos = boat.getRemos();
+            System.out.printf("%-4s | "
+                    + "%-10s | "
+                    + "%-15s | ",
+                    boat.getId(),
+                    boat.getMatricula(),
+                    boat.getMarca());
             if (tieneRemos == 1) {
-                System.out.println("REMOS: SI");
+                System.out.printf("%-10s | "
+                        + "%-10s | "
+                        + "%-5s",
+                        "COMUN",
+                        boat.getGasolina(),
+                        "NO");
             } else {
-                System.out.println("REMOS: NO");
+                System.out.printf("%-10s | "
+                        + "%-10s | "
+                        + "%-5s\n",
+                        boat.getMotor(),
+                        boat.getGasolina(),
+                        "SI");
             }
 
-            System.out.println("");
         }
+        System.out.println("\n\n");
     }
 
     public void buscarBalsa() {
@@ -122,18 +191,45 @@ public class Leer {
         if (encontrado != null) {
             busqueda.add(encontrado);
 
-            for (Boats mostrar : busqueda) {
-                System.out.println("ID: " + mostrar.getId());
-                System.out.println("MATRICULA: " + mostrar.getMatricula());
-                System.out.println("MARCA: " + mostrar.getMarca());
-                System.out.println("MOTOR: " + mostrar.getMotor());
-                short tieneRemos = mostrar.getRemos();
+            System.out.printf("%-4s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-5s\n",
+                    "ID",
+                    "MATRICULA",
+                    "MARCA",
+                    "MOTOR",
+                    "GASOLINA",
+                    "REMOS");
+
+            for (Boats boat : busqueda) {
+                short tieneRemos = boat.getRemos();
+                System.out.printf("%-4s | "
+                        + "%-10s | "
+                        + "%-15s | ",
+                        boat.getId(),
+                        boat.getMatricula(),
+                        boat.getMarca());
                 if (tieneRemos == 1) {
-                    System.out.println("REMOS: SI");
+                    System.out.printf("%-10s | "
+                            + "%-10s | "
+                            + "%-5s",
+                            "COMUN",
+                            boat.getGasolina(),
+                            "NO");
                 } else {
-                    System.out.println("REMOS: NO");
+                    System.out.printf("%-10s | "
+                            + "%-10s | "
+                            + "%-5s\n",
+                            boat.getMotor(),
+                            boat.getGasolina(),
+                            "SI");
                 }
+
             }
+            System.out.println("\n\n");
         } else {
             System.out.println("No se encontro la balsa con ID: " + id);
         }
@@ -152,15 +248,38 @@ public class Leer {
             e.printStackTrace();
         }
 
+        System.out.printf("%-4s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-10s | "
+                + "%-15s\n",
+                "ID",
+                "MATRICULA",
+                "MARCA",
+                "MODELO",
+                "MOTOR",
+                "GASOLINA",
+                "PASAJEROS");
+
         for (Airplains airplain : aviones) {
-            System.out.println("ID: " + airplain.getId());
-            System.out.println("MATRICULA: " + airplain.getMatricula());
-            System.out.println("MARCA: " + airplain.getMarca());
-            System.out.println("MOTOR: " + airplain.getMotor());
-            System.out.println("GASOLINA: " + airplain.getGasolina());
-            System.out.println("NUMERO DE PASAJEROS: " + airplain.getNumPasajeros());
-            System.out.println("");
+            System.out.printf("%-4s| "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s |\n",
+                    airplain.getId(),
+                    airplain.getMatricula(),
+                    airplain.getMarca(),
+                    airplain.getModelo(),
+                    airplain.getMotor(),
+                    airplain.getGasolina().toString(),
+                    airplain.getNumPasajeros());
         }
+        System.out.println("\n\n");
     }
 
     public void buscarAvion() {
@@ -177,14 +296,37 @@ public class Leer {
         if (encontrado != null) {
             busqueda.add(encontrado);
 
+            System.out.printf("%-4s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-10s | "
+                    + "%-15s\n",
+                    "ID",
+                    "MATRICULA",
+                    "MARCA",
+                    "MODELO",
+                    "MOTOR",
+                    "GASOLINA",
+                    "PASAJEROS");
             for (Airplains mostrar : busqueda) {
-                System.out.println("ID: " + mostrar.getId());
-                System.out.println("MATRICULA: " + mostrar.getMatricula());
-                System.out.println("MARCA: " + mostrar.getMarca());
-                System.out.println("MOTOR: " + mostrar.getMotor());
-                System.out.println("GASOLINA: " + mostrar.getGasolina());
-                System.out.println("NUMERO DE PASAJEROS: " + mostrar.getNumPasajeros());
+                System.out.printf("%-4s| "
+                        + "%-10s | "
+                        + "%-10s | "
+                        + "%-10s | "
+                        + "%-10s | "
+                        + "%-10s | "
+                        + "%-10s |\n",
+                        mostrar.getId(),
+                        mostrar.getMatricula(),
+                        mostrar.getMarca(),
+                        mostrar.getModelo(),
+                        mostrar.getMotor(),
+                        mostrar.getGasolina().toString(),
+                        mostrar.getNumPasajeros());
             }
+            System.out.println("\n\n");
         } else {
             System.out.println("No se encontro el avion con ID: " + id);
         }
